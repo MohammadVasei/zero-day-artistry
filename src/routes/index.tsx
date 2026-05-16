@@ -1,26 +1,46 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
+import { Hero } from "@/components/hero";
+import { ProductsMarquee } from "@/components/products-marquee";
+import { FocusGrid } from "@/components/focus-grid";
+import { ProcessSteps } from "@/components/process-steps";
+import { Testimonials } from "@/components/testimonials";
+import { SelectedWorks } from "@/components/selected-works";
+import { AboutTimeline } from "@/components/about-timeline";
+import { CTASection } from "@/components/cta-section";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Zero Day Development — Architecting digital resilience" },
+      {
+        name: "description",
+        content:
+          "A specialized engineering collective building middleware, industrial SaaS, AR commerce, and logistics platforms for enterprises since 2011.",
+      },
+      { property: "og:title", content: "Zero Day Development" },
+      { property: "og:description", content: "From Zero Day to Scale — middleware, AR retail, industrial SaaS, logistics." },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background text-foreground">
+      <SiteHeader />
+      <main>
+        <Hero />
+        <ProductsMarquee />
+        <FocusGrid />
+        <ProcessSteps />
+        <Testimonials />
+        <SelectedWorks />
+        <AboutTimeline />
+        <CTASection />
+      </main>
+      <SiteFooter />
     </div>
   );
-}
-
-function Index() {
-  return <PlaceholderIndex />;
 }
