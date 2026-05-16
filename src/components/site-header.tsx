@@ -1,14 +1,18 @@
 import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/zeroday-logo.png";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-background/70 border-b border-border/60">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link to="/" className="font-display text-2xl">
-          Zero<span className="text-foreground/60">Day</span>
+        <Link to="/" className="flex items-center gap-2.5">
+          <img src={logo} alt="Zero Day Team" className="h-7 w-7 object-contain" />
+          <span className="text-sm font-bold tracking-[0.18em] uppercase">
+            Zero Day <span className="text-foreground/60">Team</span>
+          </span>
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-sm">
           <Link to="/" className="hover:opacity-60 transition" activeProps={{ className: "font-semibold" }}>Home</Link>
