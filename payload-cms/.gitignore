@@ -1,0 +1,9 @@
+node_modules
+.next
+.env
+.env.local
+payload-types.ts
+media
+build
+dist
+*.log
