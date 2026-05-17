@@ -10,7 +10,8 @@ export type PayloadPage = {
     description?: string;
     ogImage?: { url?: string; alt?: string } | string;
   };
-  blocks?: Array<Record<string, unknown> & { blockType: string; id?: string }>;
+  // Loose typing — block shape is dynamic, validated by the renderer at runtime
+  blocks?: Array<{ blockType: string; id?: string; [key: string]: any }>;
 };
 
 /**
