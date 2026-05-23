@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SelectedWorks } from "@/components/selected-works";
+import { CaseStudies } from "@/components/case-studies";
 import { CTASection } from "@/components/cta-section";
 
 export const Route = createFileRoute("/portfolio")({
@@ -27,6 +28,7 @@ function Portfolio() {
           <h1 className="relative font-display text-6xl md:text-7xl mt-4">Shipped, scaled, in production.</h1>
         </section>
         <SelectedWorks />
+        <CaseStudies />
         <CTASection />
       </main>
       <SiteFooter />
