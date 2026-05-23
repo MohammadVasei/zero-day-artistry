@@ -21,7 +21,7 @@ function Portfolio() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
-      <main>
+      <main id="main">
         <section className="mx-auto max-w-5xl px-6 pt-16 pb-4 text-center relative">
           <div className="absolute inset-x-0 top-0 h-[300px] hero-glow opacity-60" />
           <p className="relative text-xs tracking-widest text-muted-foreground uppercase">/ Portfolio</p>

@@ -20,7 +20,7 @@ function About() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
-      <main className="pt-12">
+      <main id="main" className="pt-12">
         <section className="mx-auto max-w-5xl px-6 py-16 text-center relative">
           <div className="absolute inset-x-0 top-0 h-[400px] hero-glow opacity-70" />
           <p className="relative text-xs tracking-widest text-muted-foreground uppercase">/ About</p>
