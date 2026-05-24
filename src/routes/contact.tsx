@@ -21,7 +21,7 @@ function Contact() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
-      <main className="relative">
+      <main id="main" className="relative">
         <div className="absolute inset-x-0 top-0 h-[420px] hero-glow opacity-70" />
         <section className="relative mx-auto max-w-6xl px-6 py-16 grid md:grid-cols-2 gap-12">
           <div>
@@ -43,15 +43,15 @@ function Contact() {
           >
             <div>
               <label className="text-xs uppercase tracking-widest text-muted-foreground">Name</label>
-              <input required className="mt-1 w-full bg-transparent border-b border-border py-2 focus:outline-none focus:border-foreground" />
+              <input required className="mt-1 w-full bg-transparent border-b border-border py-2 focus:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--neon] focus-visible:ring-offset-2 focus-visible:ring-offset-card rounded-sm px-1" />
             </div>
             <div>
               <label className="text-xs uppercase tracking-widest text-muted-foreground">Email</label>
-              <input type="email" required className="mt-1 w-full bg-transparent border-b border-border py-2 focus:outline-none focus:border-foreground" />
+              <input type="email" required className="mt-1 w-full bg-transparent border-b border-border py-2 focus:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--neon] focus-visible:ring-offset-2 focus-visible:ring-offset-card rounded-sm px-1" />
             </div>
             <div>
               <label className="text-xs uppercase tracking-widest text-muted-foreground">Project</label>
-              <textarea rows={4} required className="mt-1 w-full bg-transparent border-b border-border py-2 focus:outline-none focus:border-foreground resize-none" />
+              <textarea rows={4} required className="mt-1 w-full bg-transparent border-b border-border py-2 focus:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[--neon] focus-visible:ring-offset-2 focus-visible:ring-offset-card rounded-sm px-1 resize-none" />
             </div>
             <button type="submit" className="pill-dark mt-4">
               {sent ? "Thanks — we'll be in touch" : "Send message"}

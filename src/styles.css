@@ -114,6 +114,60 @@
     background: var(--neon);
     color: var(--ink);
   }
+
+  /* Visible focus rings for keyboard users — never strip without replacement. */
+  :focus-visible {
+    outline: 2px solid var(--neon);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Skip link — hidden until focused, then pinned top-left. */
+  .skip-link {
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 100;
+    padding: 0.6rem 1rem;
+    border-radius: 9999px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.8rem;
+    font-weight: 600;
+    transform: translateY(-150%);
+    transition: transform 180ms ease-out;
+  }
+  .skip-link:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--neon);
+    outline-offset: 3px;
+  }
+}
+
+/* Honor user motion preferences — kills the marquee, drift particles,
+   scanlines, grid-shift, typing, and decorative drop-ins. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .drop-in,
+  .term-line,
+  .typewriter {
+    opacity: 1 !important;
+    transform: none !important;
+    width: auto !important;
+  }
+  .cyber-grid,
+  .scanlines::before,
+  .float-particles span,
+  .marquee {
+    animation: none !important;
+  }
 }
 
 @layer utilities {

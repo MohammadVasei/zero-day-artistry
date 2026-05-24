@@ -7,6 +7,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-background/70 border-b border-border/60">
+      <a href="#main" className="skip-link">Skip to main content</a>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <Link to="/" className="flex items-center gap-2.5">
           <img src={logo} alt="Zero Day Team" className="h-7 w-7 object-contain" />
