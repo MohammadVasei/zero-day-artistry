@@ -3,6 +3,11 @@ import { fileURLToPath } from "url";
 import { buildConfig } from "payload";
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { ContactSubmissions } from "./collections/ContactSubmissions";
+import { Testimonials as TestimonialsCollection } from "./collections/Testimonials";
+import { CaseStudies as CaseStudiesCollection } from "./collections/CaseStudies";
+import { Projects as ProjectsCollection } from "./collections/Projects";
+import { SiteSettings } from "./globals/SiteSettings";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -223,7 +228,8 @@ export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || "",
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   admin: { user: Users.slug },
-  collections: [Users, Media, Pages],
+  collections: [Users, Media, Pages, ContactSubmissions, TestimonialsCollection, CaseStudiesCollection, ProjectsCollection],
+  globals: [SiteSettings],
   editor: lexicalEditor({}),
   db: postgresAdapter({
     pool: { connectionString: process.env.DATABASE_URI || "" },
