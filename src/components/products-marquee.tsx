@@ -11,13 +11,17 @@ const items = [
 export function ProductsMarquee() {
   const loop = [...items, ...items, ...items];
   return (
-    <section className="relative py-8 border-y border-border/60 overflow-hidden">
-      <div className="marquee flex gap-16 whitespace-nowrap w-max">
+    <section className="relative py-6 border-y border-border/40 overflow-hidden">
+      <div className="marquee-track gap-12">
         {loop.map((it, i) => (
-          <div key={i} className="flex items-center gap-3 text-muted-foreground">
-            <it.icon size={18} />
-            <span className="font-medium text-foreground/80">{it.label}</span>
-            <span className="text-xs opacity-50">· in production</span>
+          <div key={i} className="flex items-center gap-3 text-muted-foreground shrink-0 px-4">
+            <it.icon size={16} strokeWidth={1.5} />
+            <span className="font-heading font-semibold text-foreground/70 text-sm tracking-wide">
+              {it.label}
+            </span>
+            <span className="text-[10px] font-mono text-muted-foreground/50 uppercase tracking-widest">
+              in production
+            </span>
           </div>
         ))}
       </div>
