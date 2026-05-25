@@ -69,7 +69,7 @@ export function SiteFooter() {
       </div>
 
       <div className="overflow-hidden pointer-events-none select-none data-flow">
-        <h2 className="text-giant text-center text-foreground/[0.06] -mb-[0.15em]">
+        <h2 className="text-giant text-center text-neon/[0.12] -mb-[0.15em]">
           Zero Day.
         </h2>
       </div>
