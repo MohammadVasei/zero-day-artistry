@@ -1,14 +1,28 @@
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { Linkedin, Github, Globe } from "lucide-react";
 
-const team = [
+type TeamMember = {
+  name: string;
+  role: string;
+  bio: string;
+  stacks?: string[];
+  photoUrl?: string;
+  socialLinks?: { platform: string; url: string }[];
+};
+
+const FALLBACK_MEMBERS: TeamMember[] = [
   {
     name: "Mohammad Vasei",
     role: "Project Manager",
     bio: "The architect behind every successful delivery. Mohammad orchestrates cross-functional teams across time zones, turning complex technical requirements into actionable sprints. With a sharp eye for risk and a relentless focus on deadlines, he's guided dozens of enterprise projects from concept to production — on time, every time.",
     stacks: ["Agile", "Scrum", "Jira", "Confluence", "CI/CD", "DevOps"],
-    avatar: null, // placeholder
   },
 ];
+
+const ICON_MAP: Record<string, typeof Globe> = {
+  linkedin: Linkedin,
+  github: Github,
+};
 
 function getInitials(name: string) {
   return name
@@ -18,63 +32,117 @@ function getInitials(name: string) {
     .toUpperCase();
 }
 
-export function TeamGrid() {
+function resolveMediaUrl(url?: string): string {
+  if (!url) return "";
+  if (url.startsWith("http")) return url;
+  const base =
+    (typeof process !== "undefined" && process.env?.VITE_PAYLOAD_API_URL) || "";
+  return base ? `${base.replace(/\/$/, "")}${url}` : url;
+}
+
+export function TeamGrid({ cmsData }: { cmsData?: any[] }) {
+  const members: TeamMember[] =
+    cmsData && cmsData.length > 0
+      ? cmsData.map((m: any) => ({
+          name: m.name,
+          role: m.role,
+          bio: m.bio || "",
+          stacks: m.stacks || [],
+          photoUrl: typeof m.photo === "object" ? m.photo?.url : m.photo,
+          socialLinks: m.socialLinks,
+        }))
+      : FALLBACK_MEMBERS;
+
   return (
-    <section className="mx-auto max-w-7xl px-6 py-28">
+    <section className="mx-auto max-w-4xl px-6 py-28">
       <ScrollReveal>
         <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">
-          / The Team
+          / The People
         </p>
         <h2 className="text-display text-5xl md:text-6xl mt-3">
-          The people behind the code.
+          The minds behind the code.
         </h2>
       </ScrollReveal>
 
-      <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {team.map((member, i) => (
-          <ScrollReveal key={member.name} delay={i * 120} variant="scale">
-            <div className="group glass-card rounded-3xl p-8 card-hover scan-line relative overflow-hidden">
-              {/* Decorative corner glow */}
-              <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-neon/10 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="flex flex-col gap-6 mt-14">
+        {members.map((m, i) => (
+          <ScrollReveal key={m.name} delay={i * 120}>
+            <div className="glass-card rounded-3xl overflow-hidden card-hover scan-line group">
+              <div className="grid md:grid-cols-[200px_1fr] gap-0">
+                {/* Avatar / Photo */}
+                <div className="relative aspect-square md:aspect-auto bg-gradient-to-br from-neon/10 to-neon-soft/10 overflow-hidden">
+                  {m.photoUrl ? (
+                    <img
+                      src={resolveMediaUrl(m.photoUrl)}
+                      alt={m.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center min-h-[200px]">
+                      <span className="text-display text-7xl text-neon/20 group-hover:text-neon/40 transition-colors duration-500">
+                        {getInitials(m.name)}
+                      </span>
+                    </div>
+                  )}
+                  {/* Status dot */}
+                  <span className="absolute bottom-3 right-3 status-dot" />
+                </div>
 
-              {/* Avatar */}
-              <div className="relative mb-6">
-                {member.avatar ? (
-                  <img
-                    src={member.avatar}
-                    alt={member.name}
-                    className="w-20 h-20 rounded-2xl object-cover border-2 border-neon/20 group-hover:border-neon/50 transition-all duration-500 group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="w-20 h-20 rounded-2xl bg-neon/10 border-2 border-neon/20 flex items-center justify-center group-hover:border-neon/50 group-hover:bg-neon/20 transition-all duration-500 group-hover:scale-105">
-                    <span className="text-2xl font-heading font-bold text-neon">
-                      {getInitials(member.name)}
-                    </span>
+                {/* Info */}
+                <div className="p-8">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="font-heading text-2xl font-bold glitch">
+                        {m.name}
+                      </h3>
+                      <p className="text-neon text-sm font-mono mt-1">
+                        {m.role}
+                      </p>
+                    </div>
+
+                    {/* Social links */}
+                    {m.socialLinks && m.socialLinks.length > 0 && (
+                      <div className="flex items-center gap-3 pt-1">
+                        {m.socialLinks.map((link) => {
+                          const Icon =
+                            ICON_MAP[link.platform.toLowerCase()] || Globe;
+                          return (
+                            <a
+                              key={link.platform}
+                              href={link.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-muted-foreground hover:text-neon transition-colors"
+                              aria-label={`${m.name} on ${link.platform}`}
+                            >
+                              <Icon size={16} />
+                            </a>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
-                )}
-                {/* Status indicator */}
-                <span className="absolute -bottom-1 -right-1 status-dot" />
-              </div>
 
-              {/* Info */}
-              <h3 className="font-heading text-xl font-bold glitch">{member.name}</h3>
-              <p className="text-neon text-sm font-mono mt-1">{member.role}</p>
-              <p className="text-muted-foreground text-sm mt-4 leading-relaxed">
-                {member.bio}
-              </p>
+                  <p className="text-muted-foreground text-sm mt-4 leading-relaxed">
+                    {m.bio}
+                  </p>
 
-              {/* Tech stack pills */}
-              <div className="mt-6 flex flex-wrap gap-2">
-                {member.stacks.map((stack) => (
-                  <span
-                    key={stack}
-                    className="inline-flex items-center rounded-full px-3 py-1 text-[11px] font-mono
-                      border border-border bg-secondary text-muted-foreground
-                      group-hover:border-neon/30 group-hover:text-foreground transition-all duration-300"
-                  >
-                    {stack}
-                  </span>
-                ))}
+                  {/* Tech stack pills */}
+                  {m.stacks && m.stacks.length > 0 && (
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      {m.stacks.map((stack) => (
+                        <span
+                          key={stack}
+                          className="inline-flex items-center rounded-full px-3 py-1 text-[11px] font-mono
+                            border border-border bg-secondary text-muted-foreground
+                            group-hover:border-neon/30 group-hover:text-foreground transition-all duration-300"
+                        >
+                          {stack}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </ScrollReveal>
