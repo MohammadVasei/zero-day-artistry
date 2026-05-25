@@ -64,7 +64,7 @@ export function ProcessSteps() {
         {steps.map((s, i) => (
           <ScrollReveal key={s.n} delay={i * 150}>
             <div
-              className="relative glass-card rounded-3xl p-8 card-hover"
+              className="relative glass-card rounded-3xl p-8 card-hover scan-line"
               style={{ marginTop: i === 1 ? "2rem" : 0 }}
             >
               <div className="text-display text-7xl text-foreground/10">
@@ -72,7 +72,7 @@ export function ProcessSteps() {
               </div>
               <h3 className="font-heading text-2xl font-bold mt-4">{s.title}</h3>
               <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{s.body}</p>
-              <span className="absolute top-6 right-6 size-2 rounded-full bg-accent-gold" />
+              <span className="absolute top-6 right-6 size-2 rounded-full bg-accent-blue" />
             </div>
           </ScrollReveal>
         ))}

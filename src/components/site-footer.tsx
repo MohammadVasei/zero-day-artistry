@@ -10,26 +10,30 @@ const LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative bg-foreground text-background overflow-hidden">
-      <div className="absolute inset-0 grain opacity-10 pointer-events-none" />
+    <footer className="relative bg-card border-t border-border overflow-hidden">
+      <div className="absolute inset-0 grain opacity-20 pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-8">
-        <div className="grid md:grid-cols-3 gap-10 pb-12 border-b border-background/10">
+        <div className="grid md:grid-cols-3 gap-10 pb-12 border-b border-border">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <img src={logo} alt="Zero Day Team" className="h-7 w-7 object-contain invert" />
+              <img
+                src={logo}
+                alt="Zero Day Team"
+                className="h-7 w-7 object-contain invert"
+              />
               <span className="text-sm font-heading font-bold tracking-[0.15em] uppercase">
                 Zero Day
               </span>
             </div>
-            <p className="text-sm text-background/50 max-w-xs leading-relaxed">
-              A specialized engineering collective building the invisible infrastructure that powers
-              modern enterprises.
+            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
+              A specialized engineering collective building the invisible
+              infrastructure that powers modern enterprises.
             </p>
           </div>
 
           <div>
-            <h3 className="text-xs font-heading font-bold tracking-widest uppercase text-background/40 mb-4">
+            <h3 className="text-xs font-heading font-bold tracking-widest uppercase text-muted-foreground mb-4">
               Navigation
             </h3>
             <nav className="flex flex-col gap-2">
@@ -37,7 +41,7 @@ export function SiteFooter() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-sm text-background/60 hover:text-background transition-colors"
+                  className="text-sm text-muted-foreground hover:text-accent-blue transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -46,10 +50,10 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="text-xs font-heading font-bold tracking-widest uppercase text-background/40 mb-4">
+            <h3 className="text-xs font-heading font-bold tracking-widest uppercase text-muted-foreground mb-4">
               Contact
             </h3>
-            <div className="flex flex-col gap-2 text-sm text-background/60">
+            <div className="flex flex-col gap-2 text-sm text-muted-foreground">
               <span>hello@zerodayteam.site</span>
               <span>Stockholm / Berlin / Remote</span>
             </div>
@@ -57,14 +61,17 @@ export function SiteFooter() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
-          <p className="text-xs text-background/30">
-            &copy; {new Date().getFullYear()} Zero Day Team. All rights reserved.
+          <p className="text-xs text-muted-foreground/50">
+            &copy; {new Date().getFullYear()} Zero Day Team. All rights
+            reserved.
           </p>
         </div>
       </div>
 
-      <div className="overflow-hidden pointer-events-none select-none">
-        <h2 className="text-giant text-center text-background/[0.03] -mb-[0.15em]">Zero Day.</h2>
+      <div className="overflow-hidden pointer-events-none select-none data-flow">
+        <h2 className="text-giant text-center text-foreground/[0.03] -mb-[0.15em]">
+          Zero Day.
+        </h2>
       </div>
     </footer>
   );

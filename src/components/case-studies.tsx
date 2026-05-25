@@ -34,7 +34,7 @@ const studies: Study[] = [
     success:
       "By integrating a high-performance Augmented Reality engine into the retail workflow, we created a seamless try-before-you-buy experience that boosted user engagement and measurably decreased product return rates.",
     icon: Boxes,
-    accent: "from-accent-gold to-accent-gold-soft",
+    accent: "from-accent-blue to-accent-cyan",
   },
   {
     n: "03",
@@ -46,7 +46,7 @@ const studies: Study[] = [
     success:
       "Our team developed an intelligent routing engine powered by the Valhalla framework, providing millisecond-precise navigation for large-scale logistics, cutting fuel costs and mastering last-mile delivery.",
     icon: Map,
-    accent: "from-foreground/90 to-accent-gold",
+    accent: "from-foreground/90 to-accent-blue",
   },
   {
     n: "04",
@@ -58,7 +58,7 @@ const studies: Study[] = [
     success:
       "We built a custom orchestration layer that automates the entire lifecycle from invoice to fulfillment. The middleware eliminates manual entry errors and provides a resilient, scalable bridge for real-time enterprise communication.",
     icon: Activity,
-    accent: "from-accent-gold to-foreground/90",
+    accent: "from-accent-blue to-foreground/90",
   },
 ];
 
@@ -84,7 +84,7 @@ export function CaseStudies() {
       <div className="space-y-6">
         {studies.map((s, i) => (
           <ScrollReveal key={s.title} delay={i * 100}>
-            <article className="group relative rounded-3xl border border-border bg-card overflow-hidden card-hover">
+            <article className="group relative rounded-3xl border border-border bg-card overflow-hidden card-hover scan-line">
               <div className="grid md:grid-cols-[260px_1fr] gap-0">
                 <div
                   className={`relative bg-gradient-to-br ${s.accent} p-8 flex flex-col justify-between min-h-[220px]`}
@@ -112,7 +112,7 @@ export function CaseStudies() {
                   </div>
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
-                      <p className="text-[11px] font-mono uppercase tracking-widest text-accent-gold">
+                      <p className="text-[11px] font-mono uppercase tracking-widest text-accent-blue">
                         The Challenge
                       </p>
                       <p className="mt-2 text-foreground/80 leading-relaxed text-sm">

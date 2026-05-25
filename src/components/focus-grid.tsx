@@ -44,10 +44,10 @@ export function FocusGrid() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {cards.map((c, i) => (
             <ScrollReveal key={c.title} delay={i * 100}>
-              <div className="glass-card rounded-2xl p-6 card-hover group">
+              <div className="glass-card rounded-2xl p-6 card-hover group scan-line">
                 <div
                   className="size-10 rounded-xl bg-foreground flex items-center justify-center
-                  group-hover:bg-accent-gold transition-colors duration-300"
+                  group-hover:bg-accent-blue transition-colors duration-300"
                 >
                   <c.icon size={18} className="text-background" />
                 </div>

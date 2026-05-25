@@ -23,7 +23,9 @@ export function SiteHeader() {
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? "glass border-b border-border/40 shadow-card" : "bg-transparent"
+        scrolled
+          ? "glass border-b border-accent-blue/10 shadow-card"
+          : "bg-transparent"
       }`}
     >
       <a href="#main" className="skip-link">
@@ -34,7 +36,7 @@ export function SiteHeader() {
           <img
             src={logo}
             alt="Zero Day Team"
-            className="h-7 w-7 object-contain transition-transform duration-300 group-hover:scale-110"
+            className="h-7 w-7 object-contain invert transition-transform duration-300 group-hover:scale-110"
           />
           <span className="text-sm font-heading font-bold tracking-[0.15em] uppercase">
             Zero Day
@@ -47,7 +49,7 @@ export function SiteHeader() {
               key={link.to}
               to={link.to}
               className="relative py-1 text-muted-foreground hover:text-foreground transition-colors duration-200
-                after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accent-gold
+                after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-accent-blue
                 after:transition-all after:duration-300 hover:after:w-full"
               activeProps={{
                 className: "text-foreground after:w-full",
