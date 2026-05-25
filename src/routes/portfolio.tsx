@@ -4,6 +4,8 @@ import { SiteFooter } from "@/components/site-footer";
 import { SelectedWorks } from "@/components/selected-works";
 import { CaseStudies } from "@/components/case-studies";
 import { CTASection } from "@/components/cta-section";
+import { ScrollReveal } from "@/components/scroll-reveal";
+import { TextReveal } from "@/components/text-reveal";
 
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
@@ -22,10 +24,17 @@ function Portfolio() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main id="main">
-        <section className="mx-auto max-w-5xl px-6 pt-16 pb-4 text-center relative">
-          <div className="absolute inset-x-0 top-0 h-[300px] hero-glow opacity-60" />
-          <p className="relative text-xs tracking-widest text-muted-foreground uppercase">/ Portfolio</p>
-          <h1 className="relative font-display text-6xl md:text-7xl mt-4">Shipped, scaled, in production.</h1>
+        <section className="mx-auto max-w-5xl px-6 pt-20 pb-8 text-center relative">
+          <div className="absolute inset-x-0 top-0 h-[300px] gradient-mesh" />
+          <div className="absolute inset-x-0 top-0 h-[300px] grain" />
+          <ScrollReveal>
+            <p className="relative text-xs tracking-widest text-muted-foreground uppercase font-mono">/ Portfolio</p>
+          </ScrollReveal>
+          <h1 className="relative mt-4">
+            <TextReveal className="text-display text-5xl md:text-7xl" staggerMs={50}>
+              Shipped, scaled, in production.
+            </TextReveal>
+          </h1>
         </section>
         <SelectedWorks />
         <CaseStudies />
