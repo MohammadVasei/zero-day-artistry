@@ -23,11 +23,7 @@ const serverFunctionAction = async (...args: Parameters<typeof handleServerFunct
 };
 
 const Layout = ({ children }: Args) => (
-  <RootLayout
-    config={config}
-    importMap={importMap}
-    serverFunction={serverFunctionAction}
-  >
+  <RootLayout config={config} importMap={importMap} serverFunction={serverFunctionAction}>
     {children}
   </RootLayout>
 );

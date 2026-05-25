@@ -1,8 +1,22 @@
 import { useMemo, useEffect, useRef } from "react";
 
 const SNIPPETS = [
-  "0x4F", "</>", "{0}", "0xFF", "init()", "deploy", "scale++", "sync",
-  "0101", "λ", "fetch", "build", "async", "void*", "Ø", ">>",
+  "0x4F",
+  "</>",
+  "{0}",
+  "0xFF",
+  "init()",
+  "deploy",
+  "scale++",
+  "sync",
+  "0101",
+  "λ",
+  "fetch",
+  "build",
+  "async",
+  "void*",
+  "Ø",
+  ">>",
 ];
 
 export function TechBackground() {

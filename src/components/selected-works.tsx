@@ -14,29 +14,29 @@ const FALLBACK_WORKS = [
     tag: "E-Commerce & Retail",
     stack: "Swift / Unity / ARKit",
     blurb: "Try-before-you-buy AR engine that cut product returns by 38%.",
-    accent: "from-accent-gold to-accent-gold-soft",
+    accent: "from-neon to-neon-soft",
   },
   {
     title: "Vectra Flow",
     tag: "Automotive & Logistics",
     stack: "Valhalla Engine / Kotlin / GIS",
     blurb: "Millisecond routing engine for last-mile fleet operations across the EU.",
-    accent: "from-foreground to-accent-gold",
+    accent: "from-foreground to-neon",
   },
   {
     title: "SyncBridge",
     tag: "Enterprise Middleware",
     stack: "Node.js / API Orchestration / n8n",
     blurb: "Zero-error invoice-to-fulfillment orchestration for B2B accounting systems.",
-    accent: "from-accent-gold to-foreground",
+    accent: "from-neon to-foreground",
   },
 ];
 
 const ACCENT_CYCLE = [
   "from-foreground to-foreground/70",
-  "from-accent-gold to-accent-gold-soft",
-  "from-foreground to-accent-gold",
-  "from-accent-gold to-foreground",
+  "from-neon to-neon-soft",
+  "from-foreground to-neon",
+  "from-neon to-foreground",
 ];
 
 export function SelectedWorks({ cmsData }: { cmsData?: any[] }) {
@@ -65,7 +65,7 @@ export function SelectedWorks({ cmsData }: { cmsData?: any[] }) {
         <ScrollReveal delay={100}>
           <a
             href="/portfolio"
-            className="hidden md:inline-flex items-center gap-2 text-sm font-medium hover:text-accent-gold transition-colors"
+            className="hidden md:inline-flex items-center gap-2 text-sm font-medium hover:text-neon transition-colors"
           >
             View all <ArrowUpRight size={16} />
           </a>
@@ -101,7 +101,7 @@ export function SelectedWorks({ cmsData }: { cmsData?: any[] }) {
                   </div>
                   <p className="mt-3 text-foreground/80 text-sm leading-relaxed">{w.blurb}</p>
                 </div>
-                <ArrowUpRight className="shrink-0 mt-1 text-muted-foreground group-hover:text-accent-gold group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+                <ArrowUpRight className="shrink-0 mt-1 text-muted-foreground group-hover:text-neon group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
               </div>
             </article>
           </ScrollReveal>

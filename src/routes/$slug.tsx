@@ -36,7 +36,7 @@ export const Route = createFileRoute("/$slug")({
   errorComponent: ({ error }) => (
     <div className="flex min-h-screen items-center justify-center px-6 text-center">
       <div>
-        <h1 className="text-2xl font-display mb-2">Couldn't load this page</h1>
+        <h1 className="text-2xl text-display mb-2">Couldn't load this page</h1>
         <p className="text-sm text-muted-foreground">{error.message}</p>
       </div>
     </div>
@@ -46,9 +46,9 @@ export const Route = createFileRoute("/$slug")({
 function DynamicPage() {
   const { page } = Route.useLoaderData();
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
-      <main>
+      <main id="main">
         <BlockRenderer blocks={page.blocks} />
       </main>
       <SiteFooter />

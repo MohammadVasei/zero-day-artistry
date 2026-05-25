@@ -18,8 +18,7 @@ const FALLBACK_STUDIES: Study[] = [
     title: "GridMaster",
     sector: "Industrial SaaS",
     stack: "React / SaaS / IoT",
-    challenge:
-      "Managing high-stakes power plant infrastructure and workforce safety in real-time.",
+    challenge: "Managing high-stakes power plant infrastructure and workforce safety in real-time.",
     success:
       "We engineered a robust industrial monitoring platform that replaced legacy manual tracking with high-precision data visualization, reducing operational downtime and improving worker safety protocols.",
     icon: Cpu,
@@ -35,7 +34,7 @@ const FALLBACK_STUDIES: Study[] = [
     success:
       "By integrating a high-performance Augmented Reality engine into the retail workflow, we created a seamless try-before-you-buy experience that boosted user engagement and measurably decreased product return rates.",
     icon: Boxes,
-    accent: "from-accent-gold to-accent-gold-soft",
+    accent: "from-neon to-neon-soft",
   },
   {
     n: "03",
@@ -47,7 +46,7 @@ const FALLBACK_STUDIES: Study[] = [
     success:
       "Our team developed an intelligent routing engine powered by the Valhalla framework, providing millisecond-precise navigation for large-scale logistics, cutting fuel costs and mastering last-mile delivery.",
     icon: Map,
-    accent: "from-foreground/90 to-accent-gold",
+    accent: "from-foreground/90 to-neon",
   },
   {
     n: "04",
@@ -59,7 +58,7 @@ const FALLBACK_STUDIES: Study[] = [
     success:
       "We built a custom orchestration layer that automates the entire lifecycle from invoice to fulfillment. The middleware eliminates manual entry errors and provides a resilient, scalable bridge for real-time enterprise communication.",
     icon: Activity,
-    accent: "from-accent-gold to-foreground/90",
+    accent: "from-neon to-foreground/90",
   },
 ];
 
@@ -72,9 +71,9 @@ const ICON_MAP: Record<string, typeof Activity> = {
 
 const ACCENT_CYCLE = [
   "from-foreground/95 to-foreground/70",
-  "from-accent-gold to-accent-gold-soft",
-  "from-foreground/90 to-accent-gold",
-  "from-accent-gold to-foreground/90",
+  "from-neon to-neon-soft",
+  "from-foreground/90 to-neon",
+  "from-neon to-foreground/90",
 ];
 
 export function CaseStudies({ cmsData }: { cmsData?: any[] }) {
@@ -100,9 +99,7 @@ export function CaseStudies({ cmsData }: { cmsData?: any[] }) {
             <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">
               / Case Studies
             </p>
-            <h2 className="text-display text-5xl md:text-6xl mt-3">
-              Challenges, met head-on.
-            </h2>
+            <h2 className="text-display text-5xl md:text-6xl mt-3">Challenges, met head-on.</h2>
           </div>
         </ScrollReveal>
         <ScrollReveal delay={100}>
@@ -143,7 +140,7 @@ export function CaseStudies({ cmsData }: { cmsData?: any[] }) {
                   </div>
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
-                      <p className="text-[11px] font-mono uppercase tracking-widest text-accent-gold">
+                      <p className="text-[11px] font-mono uppercase tracking-widest text-neon">
                         The Challenge
                       </p>
                       <p className="mt-2 text-foreground/80 leading-relaxed text-sm">
@@ -154,9 +151,7 @@ export function CaseStudies({ cmsData }: { cmsData?: any[] }) {
                       <p className="text-[11px] font-mono uppercase tracking-widest text-foreground">
                         The Success
                       </p>
-                      <p className="mt-2 text-foreground/80 leading-relaxed text-sm">
-                        {s.success}
-                      </p>
+                      <p className="mt-2 text-foreground/80 leading-relaxed text-sm">{s.success}</p>
                     </div>
                   </div>
                 </div>

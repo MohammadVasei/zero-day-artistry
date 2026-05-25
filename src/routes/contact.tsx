@@ -18,7 +18,8 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact ZeroDayTeam" },
       {
         property: "og:description",
-        content: "Reach the ZeroDayTeam collective for partnerships and high-stakes engineering work.",
+        content:
+          "Reach the ZeroDayTeam collective for partnerships and high-stakes engineering work.",
       },
     ],
   }),

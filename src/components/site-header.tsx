@@ -23,10 +23,8 @@ export function SiteHeader() {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent =
-        docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
       setProgress(Math.min(100, Math.max(0, scrollPercent)));
     };
 
@@ -140,11 +138,7 @@ export function SiteHeader() {
               onClick={() => setOpen(!open)}
               className="rounded-full border border-neon/20 p-2 transition-colors hover:bg-neon/10 hover:border-neon/40"
             >
-              {open ? (
-                <X size={16} className="text-neon" />
-              ) : (
-                <Menu size={16} />
-              )}
+              {open ? <X size={16} className="text-neon" /> : <Menu size={16} />}
             </button>
           </div>
         </div>

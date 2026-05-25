@@ -10,10 +10,7 @@ import { getCaseStudies, getProjects } from "@/lib/payload.functions";
 
 export const Route = createFileRoute("/portfolio")({
   loader: async () => {
-    const [cmsCaseStudies, cmsProjects] = await Promise.all([
-      getCaseStudies(),
-      getProjects(),
-    ]);
+    const [cmsCaseStudies, cmsProjects] = await Promise.all([getCaseStudies(), getProjects()]);
     return { cmsCaseStudies, cmsProjects };
   },
   head: () => ({

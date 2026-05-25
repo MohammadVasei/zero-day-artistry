@@ -66,9 +66,8 @@ export function Hero() {
             </div>
 
             <p className="text-center text-sm md:text-base text-muted-foreground max-w-md mx-auto leading-relaxed">
-              A collective engineering team building the invisible middleware,
-              industrial SaaS, and AR commerce layers that move enterprises
-              forward.
+              A collective engineering team building the invisible middleware, industrial SaaS, and
+              AR commerce layers that move enterprises forward.
             </p>
 
             <div className="flex md:justify-end justify-center">
@@ -102,9 +101,7 @@ export function Hero() {
                     className="term-line flex gap-3"
                     style={{ animationDelay: `${l.delay}ms` }}
                   >
-                    <span className="text-neon select-none">
-                      {l.prompt}
-                    </span>
+                    <span className="text-neon select-none">{l.prompt}</span>
                     <span
                       className={
                         l.ok
@@ -118,10 +115,7 @@ export function Hero() {
                     </span>
                   </div>
                 ))}
-                <div
-                  className="term-line flex gap-3 mt-2"
-                  style={{ animationDelay: "4600ms" }}
-                >
+                <div className="term-line flex gap-3 mt-2" style={{ animationDelay: "4600ms" }}>
                   <span className="text-neon select-none">$</span>
                   <span className="term-caret text-foreground" />
                 </div>
@@ -133,8 +127,7 @@ export function Hero() {
               <span className="status-dot" /> uptime 99.99%
             </div>
             <div className="absolute -left-3 -bottom-3 pill shadow-card rounded-full">
-              <span className="inline-block size-1.5 rounded-full bg-foreground" />{" "}
-              42ms median
+              <span className="inline-block size-1.5 rounded-full bg-foreground" /> 42ms median
             </div>
           </div>
         </ScrollReveal>

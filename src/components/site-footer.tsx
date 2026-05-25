@@ -31,8 +31,8 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-              A specialized engineering collective building the invisible
-              infrastructure that powers modern enterprises.
+              A specialized engineering collective building the invisible infrastructure that powers
+              modern enterprises.
             </p>
           </div>
 
@@ -58,28 +58,21 @@ export function SiteFooter() {
               Contact
             </h3>
             <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-              <span className="hover:text-neon transition-colors">
-                hello@zerodayteam.site
-              </span>
-              <span className="hover:text-neon transition-colors">
-                Stockholm / Berlin / Remote
-              </span>
+              <span className="hover:text-neon transition-colors">hello@zerodayteam.site</span>
+              <span className="hover:text-neon transition-colors">Stockholm / Berlin / Remote</span>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} ZeroDayTeam. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} ZeroDayTeam. All rights reserved.
           </p>
         </div>
       </div>
 
       <div className="overflow-hidden pointer-events-none select-none data-flow">
-        <h2 className="text-giant text-center text-neon/[0.12] -mb-[0.15em]">
-          ZeroDayTeam.
-        </h2>
+        <h2 className="text-giant text-center text-neon/[0.12] -mb-[0.15em]">ZeroDayTeam.</h2>
       </div>
     </footer>
   );

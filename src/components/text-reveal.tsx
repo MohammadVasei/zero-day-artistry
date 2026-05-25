@@ -22,10 +22,7 @@ export function TextReveal({
   const words = children.split(" ");
 
   return (
-    <Tag
-      ref={ref as any}
-      className={`text-split ${isRevealed ? "revealed" : ""} ${className}`}
-    >
+    <Tag ref={ref as any} className={`text-split ${isRevealed ? "revealed" : ""} ${className}`}>
       {words.map((word, i) => (
         <span key={i} style={{ transitionDelay: `${i * staggerMs}ms` }}>
           {word}

@@ -35,8 +35,7 @@ function getInitials(name: string) {
 function resolveMediaUrl(url?: string): string {
   if (!url) return "";
   if (url.startsWith("http")) return url;
-  const base =
-    (typeof process !== "undefined" && process.env?.VITE_PAYLOAD_API_URL) || "";
+  const base = (typeof process !== "undefined" && process.env?.VITE_PAYLOAD_API_URL) || "";
   return base ? `${base.replace(/\/$/, "")}${url}` : url;
 }
 
@@ -59,9 +58,7 @@ export function TeamGrid({ cmsData }: { cmsData?: any[] }) {
         <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">
           / The People
         </p>
-        <h2 className="text-display text-5xl md:text-6xl mt-3">
-          The minds behind the code.
-        </h2>
+        <h2 className="text-display text-5xl md:text-6xl mt-3">The minds behind the code.</h2>
       </ScrollReveal>
 
       <div className="flex flex-col gap-6 mt-14">
@@ -92,20 +89,15 @@ export function TeamGrid({ cmsData }: { cmsData?: any[] }) {
                 <div className="p-8">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <h3 className="font-heading text-2xl font-bold glitch">
-                        {m.name}
-                      </h3>
-                      <p className="text-neon text-sm font-mono mt-1">
-                        {m.role}
-                      </p>
+                      <h3 className="font-heading text-2xl font-bold glitch">{m.name}</h3>
+                      <p className="text-neon text-sm font-mono mt-1">{m.role}</p>
                     </div>
 
                     {/* Social links */}
                     {m.socialLinks && m.socialLinks.length > 0 && (
                       <div className="flex items-center gap-3 pt-1">
                         {m.socialLinks.map((link) => {
-                          const Icon =
-                            ICON_MAP[link.platform.toLowerCase()] || Globe;
+                          const Icon = ICON_MAP[link.platform.toLowerCase()] || Globe;
                           return (
                             <a
                               key={link.platform}
@@ -123,9 +115,7 @@ export function TeamGrid({ cmsData }: { cmsData?: any[] }) {
                     )}
                   </div>
 
-                  <p className="text-muted-foreground text-sm mt-4 leading-relaxed">
-                    {m.bio}
-                  </p>
+                  <p className="text-muted-foreground text-sm mt-4 leading-relaxed">{m.bio}</p>
 
                   {/* Tech stack pills */}
                   {m.stacks && m.stacks.length > 0 && (

@@ -91,8 +91,8 @@ export const submitContactForm = createServerFn({ method: "POST" })
 /**
  * Fetch all featured testimonials from Payload CMS.
  */
-export const getTestimonials = createServerFn({ method: "GET" })
-  .handler(async (): Promise<any[]> => {
+export const getTestimonials = createServerFn({ method: "GET" }).handler(
+  async (): Promise<any[]> => {
     const base = process.env.PAYLOAD_API_URL;
     if (!base) return [];
     try {
@@ -103,14 +103,17 @@ export const getTestimonials = createServerFn({ method: "GET" })
       if (!res.ok) return [];
       const json = await res.json();
       return json.docs ?? [];
-    } catch { return []; }
-  });
+    } catch {
+      return [];
+    }
+  },
+);
 
 /**
  * Fetch published case studies from Payload CMS.
  */
-export const getCaseStudies = createServerFn({ method: "GET" })
-  .handler(async (): Promise<any[]> => {
+export const getCaseStudies = createServerFn({ method: "GET" }).handler(
+  async (): Promise<any[]> => {
     const base = process.env.PAYLOAD_API_URL;
     if (!base) return [];
     try {
@@ -121,49 +124,55 @@ export const getCaseStudies = createServerFn({ method: "GET" })
       if (!res.ok) return [];
       const json = await res.json();
       return json.docs ?? [];
-    } catch { return []; }
-  });
+    } catch {
+      return [];
+    }
+  },
+);
 
 /**
  * Fetch published projects from Payload CMS.
  */
-export const getProjects = createServerFn({ method: "GET" })
-  .handler(async (): Promise<any[]> => {
-    const base = process.env.PAYLOAD_API_URL;
-    if (!base) return [];
-    try {
-      const res = await fetch(
-        `${base.replace(/\/$/, "")}/api/projects?where[status][equals]=published&sort=sortOrder&limit=20`,
-        { headers: { Accept: "application/json" } },
-      );
-      if (!res.ok) return [];
-      const json = await res.json();
-      return json.docs ?? [];
-    } catch { return []; }
-  });
+export const getProjects = createServerFn({ method: "GET" }).handler(async (): Promise<any[]> => {
+  const base = process.env.PAYLOAD_API_URL;
+  if (!base) return [];
+  try {
+    const res = await fetch(
+      `${base.replace(/\/$/, "")}/api/projects?where[status][equals]=published&sort=sortOrder&limit=20`,
+      { headers: { Accept: "application/json" } },
+    );
+    if (!res.ok) return [];
+    const json = await res.json();
+    return json.docs ?? [];
+  } catch {
+    return [];
+  }
+});
 
 /**
  * Fetch global site settings from Payload CMS.
  */
-export const getSiteSettings = createServerFn({ method: "GET" })
-  .handler(async (): Promise<any | null> => {
+export const getSiteSettings = createServerFn({ method: "GET" }).handler(
+  async (): Promise<any | null> => {
     const base = process.env.PAYLOAD_API_URL;
     if (!base) return null;
     try {
-      const res = await fetch(
-        `${base.replace(/\/$/, "")}/api/globals/site-settings`,
-        { headers: { Accept: "application/json" } },
-      );
+      const res = await fetch(`${base.replace(/\/$/, "")}/api/globals/site-settings`, {
+        headers: { Accept: "application/json" },
+      });
       if (!res.ok) return null;
       return await res.json();
-    } catch { return null; }
-  });
+    } catch {
+      return null;
+    }
+  },
+);
 
 /**
  * Fetch published team members from Payload CMS.
  */
-export const getTeamMembers = createServerFn({ method: "GET" })
-  .handler(async (): Promise<any[]> => {
+export const getTeamMembers = createServerFn({ method: "GET" }).handler(
+  async (): Promise<any[]> => {
     const base = process.env.PAYLOAD_API_URL;
     if (!base) return [];
     try {
@@ -174,5 +183,8 @@ export const getTeamMembers = createServerFn({ method: "GET" })
       if (!res.ok) return [];
       const json = await res.json();
       return json.docs ?? [];
-    } catch { return []; }
-  });
+    } catch {
+      return [];
+    }
+  },
+);

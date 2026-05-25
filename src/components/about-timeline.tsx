@@ -25,13 +25,12 @@ export function AboutTimeline() {
           <div className="rounded-3xl bg-foreground text-background p-8 md:p-10 relative overflow-hidden">
             <div className="absolute inset-0 grain opacity-10 pointer-events-none" />
             <p className="relative text-lg leading-relaxed">
-              At{" "}
-              <span className="font-heading font-bold text-neon">ZeroDayTeam</span>,
-              we don't just build apps — we architect digital resilience. What started in 2011 as a
-              small collective of specialized freelancers has evolved into a powerhouse for
-              high-stakes engineering.
+              At <span className="font-heading font-bold text-neon">ZeroDayTeam</span>, we don't
+              just build apps — we architect digital resilience. What started in 2011 as a small
+              collective of specialized freelancers has evolved into a powerhouse for high-stakes
+              engineering.
             </p>
-            <p className="relative text-sm text-background/60 mt-6 leading-relaxed">
+            <p className="relative text-sm text-background/70 mt-6 leading-relaxed">
               We thrive in the invisible layers of technology — the middleware that keeps
               enterprises running, the AR engines that transform retail, and the industrial SaaS
               platforms that monitor the power grid.

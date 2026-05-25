@@ -13,10 +13,7 @@ import { getTestimonials, getProjects } from "@/lib/payload.functions";
 
 export const Route = createFileRoute("/")({
   loader: async () => {
-    const [cmsTestimonials, cmsProjects] = await Promise.all([
-      getTestimonials(),
-      getProjects(),
-    ]);
+    const [cmsTestimonials, cmsProjects] = await Promise.all([getTestimonials(), getProjects()]);
     return { cmsTestimonials, cmsProjects };
   },
   head: () => ({
@@ -30,8 +27,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "ZeroDayTeam" },
       {
         property: "og:description",
-        content:
-          "From ZeroDayTeam to Scale — middleware, AR retail, industrial SaaS, logistics.",
+        content: "From ZeroDayTeam to Scale — middleware, AR retail, industrial SaaS, logistics.",
       },
     ],
   }),

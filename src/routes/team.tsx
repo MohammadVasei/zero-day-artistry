@@ -14,10 +14,17 @@ export const Route = createFileRoute("/team")({
   },
   head: () => ({
     meta: [
-      { title: "Our Team — Zero Day Development" },
-      { name: "description", content: "Meet the engineers behind Zero Day Development — specialists in middleware, AR commerce, industrial SaaS, and infrastructure." },
-      { property: "og:title", content: "Our Team — Zero Day Development" },
-      { property: "og:description", content: "The engineering collective behind enterprise-grade infrastructure." },
+      { title: "Our Team — ZeroDayTeam" },
+      {
+        name: "description",
+        content:
+          "Meet the engineers behind ZeroDayTeam — specialists in middleware, AR commerce, industrial SaaS, and infrastructure.",
+      },
+      { property: "og:title", content: "Our Team — ZeroDayTeam" },
+      {
+        property: "og:description",
+        content: "The engineering collective behind enterprise-grade infrastructure.",
+      },
     ],
   }),
   component: Team,
@@ -33,7 +40,9 @@ function Team() {
           <div className="absolute inset-x-0 top-0 h-[400px] gradient-mesh" />
           <div className="absolute inset-x-0 top-0 h-[400px] grain" />
           <ScrollReveal>
-            <p className="relative text-xs tracking-widest text-muted-foreground uppercase font-mono">/ Our Team</p>
+            <p className="relative text-xs tracking-widest text-muted-foreground uppercase font-mono">
+              / Our Team
+            </p>
           </ScrollReveal>
           <h1 className="relative mt-4">
             <TextReveal className="text-display text-5xl md:text-7xl lg:text-8xl" staggerMs={50}>
@@ -42,7 +51,8 @@ function Team() {
           </h1>
           <ScrollReveal delay={400}>
             <p className="relative mt-6 text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              We're a tight-knit collective of specialists — each with deep expertise in the systems that keep enterprises running at scale.
+              We're a tight-knit collective of specialists — each with deep expertise in the systems
+              that keep enterprises running at scale.
             </p>
           </ScrollReveal>
         </section>

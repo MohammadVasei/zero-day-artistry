@@ -62,7 +62,7 @@ function HeroBlock({
   secondaryCtaHref,
 }: Block) {
   return (
-    <section className="relative overflow-hidden scanlines">
+    <section className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[640px]">
         <div className="hero-glow absolute inset-x-[-10%] top-[-10%] h-[680px] opacity-70" />
       </div>
@@ -70,7 +70,7 @@ function HeroBlock({
         {eyebrow && (
           <div className="pill bg-background/80 backdrop-blur inline-flex mb-8">{eyebrow}</div>
         )}
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight">
+        <h1 className="text-display text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight">
           {headline}
         </h1>
         {subheadline && (
@@ -105,13 +105,13 @@ function TerminalBlock({ title = "root@zeroday — zsh", lines = [] }: Block) {
   return (
     <section className="mx-auto max-w-3xl px-6 py-12">
       <div className="terminal">
-        <div className="terminal-titlebar">
-          <span className="dot dot-red" />
-          <span className="dot dot-yellow" />
-          <span className="dot dot-green" />
+        <div className="flex items-center gap-1.5 px-4 py-3 border-b border-border bg-card/60">
+          <span className="size-3 rounded-full bg-red-500/80" />
+          <span className="size-3 rounded-full bg-yellow-500/80" />
+          <span className="size-3 rounded-full bg-neon" />
           <span className="ml-3 text-xs text-muted-foreground font-mono">{title}</span>
         </div>
-        <div className="terminal-body font-mono text-sm">
+        <div className="p-5 text-sm leading-relaxed font-mono">
           {lines.map((l: any, i: number) => (
             <div
               key={i}
@@ -136,7 +136,7 @@ function TerminalBlock({ title = "root@zeroday — zsh", lines = [] }: Block) {
               </span>
             </div>
           ))}
-          <div className="term-caret">▍</div>
+          <div className="term-caret" />
         </div>
       </div>
     </section>
@@ -154,7 +154,7 @@ function RichTextBlock({ content, maxWidth = "prose" }: Block) {
           : "max-w-3xl";
   return (
     <section className={`mx-auto ${width} px-6 py-10`}>
-      <div className="prose prose-invert max-w-none">{serializeLexical(content)}</div>
+      <div className="prose max-w-none">{serializeLexical(content)}</div>
     </section>
   );
 }
@@ -190,7 +190,7 @@ function ImageBlock({ image, caption, aspect = "auto" }: Block) {
 function ProcessStepsBlock({ title, steps = [] }: Block) {
   return (
     <section className="mx-auto max-w-6xl px-6 py-16">
-      {title && <h2 className="font-display text-3xl md:text-5xl mb-10">{title}</h2>}
+      {title && <h2 className="text-display text-3xl md:text-5xl mb-10">{title}</h2>}
       <ol className="grid gap-6 md:grid-cols-3">
         {steps.map((s: any, i: number) => (
           <li key={i} className="rounded-lg border border-border p-6 bg-card/40">
@@ -224,7 +224,7 @@ function MarqueeBlock({ items = [], speed = "normal" }: Block) {
 function SelectedWorksBlock({ title, projects = [] }: Block) {
   return (
     <section className="mx-auto max-w-7xl px-6 py-16">
-      {title && <h2 className="font-display text-3xl md:text-5xl mb-10">{title}</h2>}
+      {title && <h2 className="text-display text-3xl md:text-5xl mb-10">{title}</h2>}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((p: any, i: number) => {
           const img = typeof p.image === "string" ? p.image : p.image?.url;
@@ -259,7 +259,7 @@ function SelectedWorksBlock({ title, projects = [] }: Block) {
 function CtaBlock({ headline, body, ctaLabel, ctaHref }: Block) {
   return (
     <section className="mx-auto max-w-5xl px-6 py-20 text-center">
-      <h2 className="font-display text-4xl md:text-6xl">{headline}</h2>
+      <h2 className="text-display text-4xl md:text-6xl">{headline}</h2>
       {body && <p className="mt-4 mx-auto max-w-2xl text-muted-foreground">{body}</p>}
       {ctaLabel && (
         <a
