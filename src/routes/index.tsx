@@ -9,8 +9,16 @@ import { Testimonials } from "@/components/testimonials";
 import { SelectedWorks } from "@/components/selected-works";
 import { AboutTimeline } from "@/components/about-timeline";
 import { CTASection } from "@/components/cta-section";
+import { getTestimonials, getProjects } from "@/lib/payload.functions";
 
 export const Route = createFileRoute("/")({
+  loader: async () => {
+    const [cmsTestimonials, cmsProjects] = await Promise.all([
+      getTestimonials(),
+      getProjects(),
+    ]);
+    return { cmsTestimonials, cmsProjects };
+  },
   head: () => ({
     meta: [
       { title: "Zero Day Development — Architecting digital resilience" },
@@ -22,7 +30,8 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Zero Day Development" },
       {
         property: "og:description",
-        content: "From Zero Day to Scale — middleware, AR retail, industrial SaaS, logistics.",
+        content:
+          "From Zero Day to Scale — middleware, AR retail, industrial SaaS, logistics.",
       },
     ],
   }),
@@ -30,6 +39,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+  const { cmsTestimonials, cmsProjects } = Route.useLoaderData();
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
@@ -38,8 +48,8 @@ function Index() {
         <ProductsMarquee />
         <FocusGrid />
         <ProcessSteps />
-        <Testimonials />
-        <SelectedWorks />
+        <Testimonials cmsData={cmsTestimonials} />
+        <SelectedWorks cmsData={cmsProjects} />
         <AboutTimeline />
         <CTASection />
       </main>

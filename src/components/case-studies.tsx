@@ -12,13 +12,14 @@ type Study = {
   accent: string;
 };
 
-const studies: Study[] = [
+const FALLBACK_STUDIES: Study[] = [
   {
     n: "01",
     title: "GridMaster",
     sector: "Industrial SaaS",
     stack: "React / SaaS / IoT",
-    challenge: "Managing high-stakes power plant infrastructure and workforce safety in real-time.",
+    challenge:
+      "Managing high-stakes power plant infrastructure and workforce safety in real-time.",
     success:
       "We engineered a robust industrial monitoring platform that replaced legacy manual tracking with high-precision data visualization, reducing operational downtime and improving worker safety protocols.",
     icon: Cpu,
@@ -34,7 +35,7 @@ const studies: Study[] = [
     success:
       "By integrating a high-performance Augmented Reality engine into the retail workflow, we created a seamless try-before-you-buy experience that boosted user engagement and measurably decreased product return rates.",
     icon: Boxes,
-    accent: "from-neon to-neon-soft",
+    accent: "from-accent-gold to-accent-gold-soft",
   },
   {
     n: "03",
@@ -46,7 +47,7 @@ const studies: Study[] = [
     success:
       "Our team developed an intelligent routing engine powered by the Valhalla framework, providing millisecond-precise navigation for large-scale logistics, cutting fuel costs and mastering last-mile delivery.",
     icon: Map,
-    accent: "from-foreground/90 to-neon",
+    accent: "from-foreground/90 to-accent-gold",
   },
   {
     n: "04",
@@ -58,11 +59,39 @@ const studies: Study[] = [
     success:
       "We built a custom orchestration layer that automates the entire lifecycle from invoice to fulfillment. The middleware eliminates manual entry errors and provides a resilient, scalable bridge for real-time enterprise communication.",
     icon: Activity,
-    accent: "from-neon to-foreground/90",
+    accent: "from-accent-gold to-foreground/90",
   },
 ];
 
-export function CaseStudies() {
+const ICON_MAP: Record<string, typeof Activity> = {
+  cpu: Cpu,
+  boxes: Boxes,
+  map: Map,
+  activity: Activity,
+};
+
+const ACCENT_CYCLE = [
+  "from-foreground/95 to-foreground/70",
+  "from-accent-gold to-accent-gold-soft",
+  "from-foreground/90 to-accent-gold",
+  "from-accent-gold to-foreground/90",
+];
+
+export function CaseStudies({ cmsData }: { cmsData?: any[] }) {
+  const studies: Study[] =
+    cmsData && cmsData.length > 0
+      ? cmsData.map((s: any, i: number) => ({
+          n: String(i + 1).padStart(2, "0"),
+          title: s.title,
+          sector: s.sector,
+          stack: s.stack || "",
+          challenge: s.challenge,
+          success: s.success,
+          icon: ICON_MAP[s.icon?.toLowerCase()] || Activity,
+          accent: ACCENT_CYCLE[i % ACCENT_CYCLE.length],
+        }))
+      : FALLBACK_STUDIES;
+
   return (
     <section className="mx-auto max-w-7xl px-6 py-28">
       <div className="flex items-end justify-between mb-14">
@@ -71,12 +100,14 @@ export function CaseStudies() {
             <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">
               / Case Studies
             </p>
-            <h2 className="text-display text-5xl md:text-6xl mt-3">Challenges, met head-on.</h2>
+            <h2 className="text-display text-5xl md:text-6xl mt-3">
+              Challenges, met head-on.
+            </h2>
           </div>
         </ScrollReveal>
         <ScrollReveal delay={100}>
           <span className="hidden md:inline-flex items-center gap-2 text-sm text-muted-foreground font-mono">
-            4 / 4 in production
+            {studies.length} / {studies.length} in production
           </span>
         </ScrollReveal>
       </div>
@@ -84,13 +115,13 @@ export function CaseStudies() {
       <div className="space-y-6">
         {studies.map((s, i) => (
           <ScrollReveal key={s.title} delay={i * 100}>
-            <article className="group relative rounded-3xl border border-border glass-card overflow-hidden card-hover scan-line">
+            <article className="group relative rounded-3xl border border-border bg-card overflow-hidden card-hover">
               <div className="grid md:grid-cols-[260px_1fr] gap-0">
                 <div
                   className={`relative bg-gradient-to-br ${s.accent} p-8 flex flex-col justify-between min-h-[220px]`}
                 >
                   <div className="absolute inset-0 grain opacity-20 pointer-events-none" />
-                  <div className="relative flex items-center justify-between text-background/90 text-xs font-mono">
+                  <div className="relative flex items-center justify-between text-background/70 text-xs font-mono">
                     <span>{s.title.toLowerCase().replace(/\s/g, "_")}.mdx</span>
                     <span className="opacity-70">{s.n}</span>
                   </div>
@@ -99,11 +130,11 @@ export function CaseStudies() {
                     <h3 className="font-heading text-background text-4xl md:text-5xl font-bold leading-none">
                       {s.title}
                     </h3>
-                    <p className="text-background/90 text-xs mt-3 font-mono">{s.sector}</p>
+                    <p className="text-background/70 text-xs mt-3 font-mono">{s.sector}</p>
                   </div>
                 </div>
 
-                <div className="p-8">
+                <div className="p-8 md:p-10">
                   <div className="flex flex-wrap items-center gap-2 mb-6">
                     <span className="pill !py-1 !px-3 !text-[10px] uppercase tracking-widest font-heading">
                       {s.sector}
@@ -112,10 +143,10 @@ export function CaseStudies() {
                   </div>
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
-                      <p className="text-[11px] font-mono uppercase tracking-widest text-neon">
+                      <p className="text-[11px] font-mono uppercase tracking-widest text-accent-gold">
                         The Challenge
                       </p>
-                      <p className="mt-2 text-foreground/90 leading-relaxed text-sm">
+                      <p className="mt-2 text-foreground/80 leading-relaxed text-sm">
                         {s.challenge}
                       </p>
                     </div>
@@ -123,7 +154,9 @@ export function CaseStudies() {
                       <p className="text-[11px] font-mono uppercase tracking-widest text-foreground">
                         The Success
                       </p>
-                      <p className="mt-2 text-foreground/90 leading-relaxed text-sm">{s.success}</p>
+                      <p className="mt-2 text-foreground/80 leading-relaxed text-sm">
+                        {s.success}
+                      </p>
                     </div>
                   </div>
                 </div>

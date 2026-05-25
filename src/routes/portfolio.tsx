@@ -6,8 +6,16 @@ import { CaseStudies } from "@/components/case-studies";
 import { CTASection } from "@/components/cta-section";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { TextReveal } from "@/components/text-reveal";
+import { getCaseStudies, getProjects } from "@/lib/payload.functions";
 
 export const Route = createFileRoute("/portfolio")({
+  loader: async () => {
+    const [cmsCaseStudies, cmsProjects] = await Promise.all([
+      getCaseStudies(),
+      getProjects(),
+    ]);
+    return { cmsCaseStudies, cmsProjects };
+  },
   head: () => ({
     meta: [
       { title: "Portfolio — Zero Day Development" },
@@ -28,6 +36,7 @@ export const Route = createFileRoute("/portfolio")({
 });
 
 function Portfolio() {
+  const { cmsCaseStudies, cmsProjects } = Route.useLoaderData();
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
@@ -46,8 +55,8 @@ function Portfolio() {
             </TextReveal>
           </h1>
         </section>
-        <SelectedWorks />
-        <CaseStudies />
+        <SelectedWorks cmsData={cmsProjects} />
+        <CaseStudies cmsData={cmsCaseStudies} />
         <CTASection />
       </main>
       <SiteFooter />
