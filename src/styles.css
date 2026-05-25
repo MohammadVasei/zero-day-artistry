@@ -58,9 +58,9 @@
   --neon: oklch(0.85 0.25 145);
   --neon-soft: oklch(0.72 0.18 155);
 
-  --card: oklch(0.15 0.025 255);
+  --card: oklch(0.18 0.03 255);
   --card-foreground: oklch(0.97 0.005 0);
-  --popover: oklch(0.15 0.025 255);
+  --popover: oklch(0.18 0.03 255);
   --popover-foreground: oklch(0.97 0.005 0);
 
   --primary: oklch(0.85 0.25 145);
@@ -237,7 +237,7 @@
     border: 1px solid oklch(0.85 0.25 145 / 0.2);
   }
   .glass-card {
-    background: oklch(0.16 0.03 255 / 0.85);
+    background: oklch(0.19 0.03 255 / 0.9);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid oklch(0.85 0.25 145 / 0.18);

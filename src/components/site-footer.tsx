@@ -10,7 +10,7 @@ const LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative bg-card border-t border-border overflow-hidden">
+    <footer className="relative bg-[oklch(0.06_0.02_255)] border-t border-neon/15 overflow-hidden">
       <div className="absolute inset-0 grain opacity-20 pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-8">
@@ -54,14 +54,14 @@ export function SiteFooter() {
               Contact
             </h3>
             <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-              <span>hello@zerodayteam.site</span>
-              <span>Stockholm / Berlin / Remote</span>
+              <span className="hover:text-neon transition-colors">hello@zerodayteam.site</span>
+              <span className="hover:text-neon transition-colors">Stockholm / Berlin / Remote</span>
             </div>
           </div>
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
-          <p className="text-xs text-muted-foreground/50">
+          <p className="text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} Zero Day Team. All rights
             reserved.
           </p>
@@ -69,7 +69,7 @@ export function SiteFooter() {
       </div>
 
       <div className="overflow-hidden pointer-events-none select-none data-flow">
-        <h2 className="text-giant text-center text-foreground/[0.03] -mb-[0.15em]">
+        <h2 className="text-giant text-center text-foreground/[0.06] -mb-[0.15em]">
           Zero Day.
         </h2>
       </div>

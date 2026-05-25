@@ -90,10 +90,10 @@ export function Hero() {
                   <span className="size-3 rounded-full bg-yellow-500/80" />
                   <span className="size-3 rounded-full bg-neon" />
                 </div>
-                <span className="text-[11px] text-white/40 font-mono">
+                <span className="text-[11px] text-muted-foreground font-mono">
                   root@zeroday — zsh
                 </span>
-                <span className="text-[11px] text-white/30">80×24</span>
+                <span className="text-[11px] text-muted-foreground/70">80×24</span>
               </div>
               <div className="p-5 md:p-6 text-sm md:text-[15px] leading-relaxed min-h-[220px]">
                 {LINES.map((l, i) => (
@@ -110,8 +110,8 @@ export function Hero() {
                         l.ok
                           ? "text-neon-soft"
                           : l.muted
-                            ? "text-white/45"
-                            : "text-white/90"
+                            ? "text-muted-foreground"
+                            : "text-foreground"
                       }
                     >
                       {l.text}
@@ -123,7 +123,7 @@ export function Hero() {
                   style={{ animationDelay: "4600ms" }}
                 >
                   <span className="text-neon select-none">$</span>
-                  <span className="term-caret text-white/90" />
+                  <span className="term-caret text-foreground" />
                 </div>
               </div>
             </div>

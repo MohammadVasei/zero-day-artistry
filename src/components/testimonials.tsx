@@ -25,7 +25,7 @@ export function Testimonials() {
               <span className="text-display text-8xl text-foreground/[0.05] absolute top-4 right-6 leading-none select-none">
                 &ldquo;
               </span>
-              <blockquote className="text-foreground/85 leading-relaxed relative z-10">
+              <blockquote className="text-foreground/90 leading-relaxed relative z-10">
                 {q.quote}
               </blockquote>
               <figcaption className="mt-8 flex items-center gap-3">

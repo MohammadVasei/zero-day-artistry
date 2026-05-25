@@ -84,13 +84,13 @@ export function CaseStudies() {
       <div className="space-y-6">
         {studies.map((s, i) => (
           <ScrollReveal key={s.title} delay={i * 100}>
-            <article className="group relative rounded-3xl border border-border bg-card overflow-hidden card-hover scan-line">
+            <article className="group relative rounded-3xl border border-border glass-card overflow-hidden card-hover scan-line">
               <div className="grid md:grid-cols-[260px_1fr] gap-0">
                 <div
                   className={`relative bg-gradient-to-br ${s.accent} p-8 flex flex-col justify-between min-h-[220px]`}
                 >
                   <div className="absolute inset-0 grain opacity-20 pointer-events-none" />
-                  <div className="relative flex items-center justify-between text-background/70 text-xs font-mono">
+                  <div className="relative flex items-center justify-between text-background/90 text-xs font-mono">
                     <span>{s.title.toLowerCase().replace(/\s/g, "_")}.mdx</span>
                     <span className="opacity-70">{s.n}</span>
                   </div>
@@ -99,11 +99,11 @@ export function CaseStudies() {
                     <h3 className="font-heading text-background text-4xl md:text-5xl font-bold leading-none">
                       {s.title}
                     </h3>
-                    <p className="text-background/70 text-xs mt-3 font-mono">{s.sector}</p>
+                    <p className="text-background/90 text-xs mt-3 font-mono">{s.sector}</p>
                   </div>
                 </div>
 
-                <div className="p-8 md:p-10">
+                <div className="p-8">
                   <div className="flex flex-wrap items-center gap-2 mb-6">
                     <span className="pill !py-1 !px-3 !text-[10px] uppercase tracking-widest font-heading">
                       {s.sector}
@@ -115,7 +115,7 @@ export function CaseStudies() {
                       <p className="text-[11px] font-mono uppercase tracking-widest text-neon">
                         The Challenge
                       </p>
-                      <p className="mt-2 text-foreground/80 leading-relaxed text-sm">
+                      <p className="mt-2 text-foreground/90 leading-relaxed text-sm">
                         {s.challenge}
                       </p>
                     </div>
@@ -123,7 +123,7 @@ export function CaseStudies() {
                       <p className="text-[11px] font-mono uppercase tracking-widest text-foreground">
                         The Success
                       </p>
-                      <p className="mt-2 text-foreground/80 leading-relaxed text-sm">{s.success}</p>
+                      <p className="mt-2 text-foreground/90 leading-relaxed text-sm">{s.success}</p>
                     </div>
                   </div>
                 </div>

@@ -19,7 +19,7 @@ export function ProductsMarquee() {
             <span className="font-heading font-semibold text-foreground/70 text-sm tracking-wide">
               {it.label}
             </span>
-            <span className="text-[10px] font-mono text-muted-foreground/50 uppercase tracking-widest">
+            <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">
               in production
             </span>
           </div>

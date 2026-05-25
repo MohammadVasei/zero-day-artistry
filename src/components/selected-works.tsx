@@ -57,13 +57,13 @@ export function SelectedWorks() {
       <div className="grid md:grid-cols-2 gap-6">
         {works.map((w, i) => (
           <ScrollReveal key={w.title} variant="scale" delay={i * 100}>
-            <article className="group relative rounded-3xl border border-border overflow-hidden card-hover bg-card">
+            <article className="group relative rounded-3xl border border-border overflow-hidden card-hover glass-card">
               <div
                 className={`relative aspect-[16/10] bg-gradient-to-br ${w.accent} overflow-hidden`}
               >
                 <div className="absolute inset-0 grain opacity-20" />
                 <div className="absolute inset-6 rounded-2xl glass flex flex-col p-6 transition-transform duration-500 group-hover:scale-[1.02]">
-                  <div className="flex items-center justify-between text-background/70 text-xs font-mono">
+                  <div className="flex items-center justify-between text-background/90 text-xs font-mono">
                     <span>{w.tag.toLowerCase().replace(/\s/g, "_")}.tsx</span>
                   </div>
                   <div className="mt-auto">
@@ -81,7 +81,7 @@ export function SelectedWorks() {
                     </span>
                     <span className="font-mono text-muted-foreground">{w.stack}</span>
                   </div>
-                  <p className="mt-3 text-foreground/80 text-sm leading-relaxed">{w.blurb}</p>
+                  <p className="mt-3 text-foreground/90 text-sm leading-relaxed">{w.blurb}</p>
                 </div>
                 <ArrowUpRight className="shrink-0 mt-1 text-muted-foreground group-hover:text-neon group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
               </div>
