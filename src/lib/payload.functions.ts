@@ -45,3 +45,45 @@ export const getPageBySlug = createServerFn({ method: "GET" })
       return null;
     }
   });
+
+/**
+ * Submit a contact form entry to the Payload CMS.
+ * Creates a new document in the contact-submissions collection.
+ */
+export const submitContactForm = createServerFn({ method: "POST" })
+  .inputValidator((data: { name: string; email: string; project: string }) => data)
+  .handler(async ({ data }): Promise<{ success: boolean; error?: string }> => {
+    const base = process.env.PAYLOAD_API_URL;
+    if (!base) {
+      console.warn("[payload] PAYLOAD_API_URL is not set — contact form disabled");
+      return { success: false, error: "Contact form is not configured." };
+    }
+
+    const url = `${base.replace(/\/$/, "")}/api/contact-submissions`;
+
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          project: data.project,
+        }),
+      });
+
+      if (!res.ok) {
+        const body = await res.text();
+        console.error(`[payload] contact submit failed: ${res.status}`, body);
+        return { success: false, error: "Failed to send message. Please try again." };
+      }
+
+      return { success: true };
+    } catch (err) {
+      console.error("[payload] contact submit error:", err);
+      return { success: false, error: "Something went wrong. Please try again." };
+    }
+  });
