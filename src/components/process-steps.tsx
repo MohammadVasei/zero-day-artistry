@@ -67,7 +67,7 @@ export function ProcessSteps() {
               className="relative glass-card rounded-3xl p-8 card-hover scan-line"
               style={{ marginTop: i === 1 ? "2rem" : 0 }}
             >
-              <div className="text-display text-7xl text-foreground/10">
+              <div className="text-display text-7xl text-neon/30">
                 <Counter target={s.n} />
               </div>
               <h3 className="font-heading text-2xl font-bold mt-4">{s.title}</h3>
