@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import logo from "@/assets/zeroday-logo.png";
 
 const NAV_LINKS = [
@@ -13,9 +13,19 @@ const NAV_LINKS = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const headerRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+
+      // Calculate scroll progress (0 → 100)
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+      setProgress(Math.min(100, Math.max(0, scrollPercent)));
+    };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -23,14 +33,28 @@ export function SiteHeader() {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none px-4 pt-4">
       <header
+        ref={headerRef}
         className={`pointer-events-auto transition-all duration-500 ease-out
-          rounded-full border backdrop-blur-xl
+          rounded-full border backdrop-blur-xl relative overflow-hidden
           ${
             scrolled
               ? "px-4 py-2 max-w-2xl border-neon/30 bg-neon/[0.06] shadow-neon-sm"
               : "px-6 py-3 max-w-4xl border-neon/15 bg-background/60"
           }`}
       >
+        {/* Scroll progress bar — runs along the bottom of the pill */}
+        <div
+          className="absolute bottom-0 left-0 h-[2px] bg-neon transition-all duration-150 ease-out rounded-full"
+          style={{
+            width: `${progress}%`,
+            opacity: progress > 0 ? 1 : 0,
+            boxShadow:
+              progress > 0
+                ? "0 0 8px oklch(0.85 0.25 145 / 0.6), 0 0 20px oklch(0.85 0.25 145 / 0.3)"
+                : "none",
+          }}
+        />
+
         <a href="#main" className="skip-link">
           Skip to main content
         </a>
