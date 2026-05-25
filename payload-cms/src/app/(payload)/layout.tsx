@@ -2,17 +2,32 @@
 import type { Metadata } from "next";
 import config from "@payload-config";
 import "@payloadcms/next/css";
-import { RootLayout, generatePageMetadata } from "@payloadcms/next/layouts";
+import { RootLayout, handleServerFunctions } from "@payloadcms/next/layouts";
+import { generatePageMetadata } from "@payloadcms/next/views";
 
-import { importMap } from "./admin/importMap";
+import { importMap } from "./admin/importMap.js";
 
 type Args = { children: React.ReactNode };
 
-export const generateMetadata = ({ params, searchParams }: any): Promise<Metadata> =>
-  generatePageMetadata({ config, params, searchParams });
+export const generateMetadata = ({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ segments: string[] }>;
+  searchParams: Promise<{ [k: string]: string | string[] }>;
+}): Promise<Metadata> => generatePageMetadata({ config, params, searchParams });
+
+const serverFunctionAction = async (...args: Parameters<typeof handleServerFunctions>) => {
+  "use server";
+  return handleServerFunctions(...args);
+};
 
 const Layout = ({ children }: Args) => (
-  <RootLayout config={config} importMap={importMap}>
+  <RootLayout
+    config={config}
+    importMap={importMap}
+    serverFunction={serverFunctionAction}
+  >
     {children}
   </RootLayout>
 );
