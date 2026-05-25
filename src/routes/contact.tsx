@@ -75,10 +75,10 @@ function Contact() {
               </p>
               <div className="mt-10 space-y-4 text-sm">
                 <div className="flex items-center gap-3">
-                  <Mail size={16} className="text-accent-blue" /> hello@zerodayteam.site
+                  <Mail size={16} className="text-neon" /> hello@zerodayteam.site
                 </div>
                 <div className="flex items-center gap-3">
-                  <MapPin size={16} className="text-accent-blue" /> Stockholm / Berlin / Remote
+                  <MapPin size={16} className="text-neon" /> Stockholm / Berlin / Remote
                 </div>
               </div>
             </div>
@@ -98,7 +98,7 @@ function Contact() {
                   name="name"
                   required
                   disabled={status === "sending"}
-                  className="mt-2 w-full bg-transparent border-b border-border py-2 focus:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:ring-offset-card rounded-sm px-1 transition-colors"
+                  className="mt-2 w-full bg-transparent border-b border-border py-2 focus:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon focus-visible:ring-offset-2 focus-visible:ring-offset-card rounded-sm px-1 transition-colors"
                 />
               </div>
               <div>
@@ -114,7 +114,7 @@ function Contact() {
                   type="email"
                   required
                   disabled={status === "sending"}
-                  className="mt-2 w-full bg-transparent border-b border-border py-2 focus:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:ring-offset-card rounded-sm px-1 transition-colors"
+                  className="mt-2 w-full bg-transparent border-b border-border py-2 focus:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon focus-visible:ring-offset-2 focus-visible:ring-offset-card rounded-sm px-1 transition-colors"
                 />
               </div>
               <div>
@@ -130,7 +130,7 @@ function Contact() {
                   rows={4}
                   required
                   disabled={status === "sending"}
-                  className="mt-2 w-full bg-transparent border-b border-border py-2 focus:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-blue focus-visible:ring-offset-2 focus-visible:ring-offset-card rounded-sm px-1 resize-none transition-colors"
+                  className="mt-2 w-full bg-transparent border-b border-border py-2 focus:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon focus-visible:ring-offset-2 focus-visible:ring-offset-card rounded-sm px-1 resize-none transition-colors"
                 />
               </div>
 

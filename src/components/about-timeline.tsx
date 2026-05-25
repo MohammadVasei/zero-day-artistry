@@ -26,7 +26,7 @@ export function AboutTimeline() {
             <div className="absolute inset-0 grain opacity-10 pointer-events-none" />
             <p className="relative text-lg leading-relaxed">
               At{" "}
-              <span className="font-heading font-bold text-accent-blue">Zero Day Development</span>,
+              <span className="font-heading font-bold text-neon">Zero Day Development</span>,
               we don't just build apps — we architect digital resilience. What started in 2011 as a
               small collective of specialized freelancers has evolved into a powerhouse for
               high-stakes engineering.

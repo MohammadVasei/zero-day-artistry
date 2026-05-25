@@ -72,7 +72,7 @@ export function ProcessSteps() {
               </div>
               <h3 className="font-heading text-2xl font-bold mt-4">{s.title}</h3>
               <p className="text-sm text-muted-foreground mt-3 leading-relaxed">{s.body}</p>
-              <span className="absolute top-6 right-6 size-2 rounded-full bg-accent-blue" />
+              <span className="absolute top-6 right-6 size-2 rounded-full bg-neon" />
             </div>
           </ScrollReveal>
         ))}

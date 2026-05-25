@@ -35,18 +35,19 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --color-accent-blue: var(--accent-blue);
-  --color-accent-cyan: var(--accent-cyan);
+  --color-neon: var(--neon);
+  --color-neon-soft: var(--neon-soft);
 
   --shadow-card: 0 2px 8px oklch(0 0 0 / 0.3), 0 8px 24px -4px oklch(0 0 0 / 0.4);
-  --shadow-glass: 0 8px 32px oklch(0.6 0.2 255 / 0.08), inset 0 1px 0 oklch(1 0 0 / 0.04);
-  --shadow-elevated: 0 20px 60px -12px oklch(0.6 0.2 255 / 0.2);
-  --shadow-glow: 0 0 30px oklch(0.6 0.2 255 / 0.3), 0 0 60px oklch(0.6 0.2 255 / 0.15);
+  --shadow-glass: 0 8px 32px oklch(0.85 0.25 145 / 0.06), inset 0 1px 0 oklch(1 0 0 / 0.04);
+  --shadow-elevated: 0 20px 60px -12px oklch(0.85 0.25 145 / 0.15);
+  --shadow-glow: 0 0 30px oklch(0.85 0.25 145 / 0.3), 0 0 60px oklch(0.85 0.25 145 / 0.15);
+  --shadow-neon: 0 0 20px oklch(0.85 0.25 145 / 0.4), 0 0 40px oklch(0.85 0.25 145 / 0.2);
+  --shadow-neon-sm: 0 0 12px oklch(0.85 0.25 145 / 0.15), 0 4px 16px oklch(0 0 0 / 0.3);
 }
 
 /* ═══════════════════════════════════════════
-   DARK TECH THEME (default)
-   Deep navy + electric blue + cyan accents
+   DARK TECH THEME — Deep navy + Neon green
    ═══════════════════════════════════════════ */
 :root {
   --radius: 1rem;
@@ -54,27 +55,27 @@
   --background: oklch(0.11 0.025 255);
   --foreground: oklch(0.93 0.01 240);
 
-  --accent-blue: oklch(0.62 0.2 255);
-  --accent-cyan: oklch(0.78 0.13 200);
+  --neon: oklch(0.85 0.25 145);
+  --neon-soft: oklch(0.72 0.18 155);
 
   --card: oklch(0.15 0.025 255);
   --card-foreground: oklch(0.93 0.01 240);
   --popover: oklch(0.15 0.025 255);
   --popover-foreground: oklch(0.93 0.01 240);
 
-  --primary: oklch(0.62 0.2 255);
-  --primary-foreground: oklch(0.98 0.005 240);
+  --primary: oklch(0.85 0.25 145);
+  --primary-foreground: oklch(0.11 0.025 255);
   --secondary: oklch(0.18 0.02 255);
   --secondary-foreground: oklch(0.93 0.01 240);
   --muted: oklch(0.2 0.02 255);
   --muted-foreground: oklch(0.55 0.03 250);
-  --accent: var(--accent-blue);
-  --accent-foreground: oklch(0.98 0.005 240);
+  --accent: var(--neon);
+  --accent-foreground: oklch(0.11 0.025 255);
   --destructive: oklch(0.55 0.22 25);
   --destructive-foreground: oklch(0.98 0.005 240);
   --border: oklch(0.22 0.03 255);
   --input: oklch(0.2 0.025 255);
-  --ring: var(--accent-blue);
+  --ring: var(--neon);
 }
 
 /* ═══════════════════════════════════════════
@@ -92,11 +93,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
   ::selection {
-    background: var(--accent-blue);
-    color: oklch(0.98 0.005 240);
+    background: var(--neon);
+    color: oklch(0.11 0.025 255);
   }
   :focus-visible {
-    outline: 2px solid var(--accent-blue);
+    outline: 2px solid var(--neon);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -107,8 +108,8 @@
     z-index: 100;
     padding: 0.6rem 1rem;
     border-radius: 9999px;
-    background: var(--accent-blue);
-    color: oklch(0.98 0.005 240);
+    background: var(--neon);
+    color: oklch(0.11 0.025 255);
     font-size: 0.8rem;
     font-weight: 600;
     transform: translateY(-150%);
@@ -116,7 +117,7 @@
   }
   .skip-link:focus-visible {
     transform: translateY(0);
-    outline: 2px solid var(--accent-cyan);
+    outline: 2px solid var(--neon-soft);
     outline-offset: 3px;
   }
   html {
@@ -144,7 +145,8 @@
   }
   .marquee-track,
   .tech-grid,
-  .float-particles span {
+  .float-particles span,
+  .orb {
     animation: none !important;
   }
 }
@@ -177,12 +179,12 @@
   .tech-grid {
     background-image: linear-gradient(
         to right,
-        oklch(0.62 0.2 255 / 0.07) 1px,
+        oklch(0.85 0.25 145 / 0.07) 1px,
         transparent 1px
       ),
       linear-gradient(
         to bottom,
-        oklch(0.62 0.2 255 / 0.07) 1px,
+        oklch(0.85 0.25 145 / 0.07) 1px,
         transparent 1px
       );
     background-size: 60px 60px;
@@ -205,7 +207,7 @@
   /* ──── Floating Code Particles ──── */
   .float-particles span {
     position: absolute;
-    color: oklch(0.62 0.2 255 / 0.25);
+    color: oklch(0.85 0.25 145 / 0.25);
     font-family: var(--font-mono);
     font-size: 11px;
     animation: drift linear infinite;
@@ -227,18 +229,18 @@
     }
   }
 
-  /* ──── Glassmorphism (blue-tinted) ──── */
+  /* ──── Glassmorphism (green-tinted) ──── */
   .glass {
-    background: oklch(0.62 0.2 255 / 0.06);
+    background: oklch(0.85 0.25 145 / 0.06);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid oklch(0.62 0.2 255 / 0.12);
+    border: 1px solid oklch(0.85 0.25 145 / 0.12);
   }
   .glass-card {
     background: oklch(0.15 0.03 255 / 0.8);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid oklch(0.62 0.2 255 / 0.1);
+    border: 1px solid oklch(0.85 0.25 145 / 0.1);
     box-shadow: var(--shadow-glass);
   }
 
@@ -257,8 +259,8 @@
     background: linear-gradient(
       90deg,
       transparent,
-      var(--accent-blue),
-      var(--accent-cyan),
+      var(--neon),
+      var(--neon-soft),
       transparent
     );
     opacity: 0;
@@ -286,13 +288,13 @@
   }
   @keyframes glitch-text {
     0% {
-      text-shadow: 2px 0 var(--accent-cyan), -2px 0 oklch(0.6 0.22 320);
+      text-shadow: 2px 0 var(--neon), -2px 0 oklch(0.6 0.22 320);
     }
     25% {
-      text-shadow: -2px 0 var(--accent-cyan), 2px 0 oklch(0.6 0.22 320);
+      text-shadow: -2px 0 var(--neon), 2px 0 oklch(0.6 0.22 320);
     }
     50% {
-      text-shadow: 1px 0 var(--accent-blue), -1px 0 oklch(0.6 0.22 320);
+      text-shadow: 1px 0 var(--neon-soft), -1px 0 oklch(0.6 0.22 320);
     }
     100% {
       text-shadow: none;
@@ -304,9 +306,9 @@
     font-family: var(--font-mono);
     background: oklch(0.09 0.025 255);
     color: oklch(0.9 0.02 230);
-    border: 1px solid oklch(0.62 0.2 255 / 0.25);
-    box-shadow: 0 0 0 1px oklch(0.62 0.2 255 / 0.1),
-      0 30px 80px -20px oklch(0.3 0.15 255 / 0.5);
+    border: 1px solid oklch(0.85 0.25 145 / 0.25);
+    box-shadow: 0 0 0 1px oklch(0.85 0.25 145 / 0.1),
+      0 30px 80px -20px oklch(0.3 0.15 145 / 0.3);
     border-radius: 14px;
     overflow: hidden;
   }
@@ -328,7 +330,7 @@
     content: "▍";
     display: inline-block;
     margin-left: 2px;
-    color: var(--accent-blue);
+    color: var(--neon);
     animation: blink 1s steps(1) infinite;
   }
   @keyframes blink {
@@ -337,7 +339,7 @@
     }
   }
 
-  /* ──── Pulse Ring (for status indicators) ──── */
+  /* ──── Pulse Ring ──── */
   .pulse-ring {
     position: relative;
   }
@@ -346,7 +348,7 @@
     position: absolute;
     inset: -4px;
     border-radius: inherit;
-    border: 1px solid var(--accent-blue);
+    border: 1px solid var(--neon);
     opacity: 0;
     animation: ring-expand 2.5s ease-out infinite;
   }
@@ -376,8 +378,8 @@
     background: linear-gradient(
       90deg,
       transparent,
-      var(--accent-blue),
-      var(--accent-cyan),
+      var(--neon),
+      var(--neon-soft),
       transparent
     );
     animation: flow-right 4s ease-in-out infinite;
@@ -443,24 +445,12 @@
     transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
       transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .stagger-in.revealed > *:nth-child(1) {
-    transition-delay: 0ms;
-  }
-  .stagger-in.revealed > *:nth-child(2) {
-    transition-delay: 80ms;
-  }
-  .stagger-in.revealed > *:nth-child(3) {
-    transition-delay: 160ms;
-  }
-  .stagger-in.revealed > *:nth-child(4) {
-    transition-delay: 240ms;
-  }
-  .stagger-in.revealed > *:nth-child(5) {
-    transition-delay: 320ms;
-  }
-  .stagger-in.revealed > *:nth-child(6) {
-    transition-delay: 400ms;
-  }
+  .stagger-in.revealed > *:nth-child(1) { transition-delay: 0ms; }
+  .stagger-in.revealed > *:nth-child(2) { transition-delay: 80ms; }
+  .stagger-in.revealed > *:nth-child(3) { transition-delay: 160ms; }
+  .stagger-in.revealed > *:nth-child(4) { transition-delay: 240ms; }
+  .stagger-in.revealed > *:nth-child(5) { transition-delay: 320ms; }
+  .stagger-in.revealed > *:nth-child(6) { transition-delay: 400ms; }
   .stagger-in.revealed > * {
     opacity: 1;
     transform: translateY(0);
@@ -473,29 +463,25 @@
     animation: marquee-scroll 40s linear infinite;
   }
   @keyframes marquee-scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 
-  /* ──── Blue Gradient Mesh ──── */
+  /* ──── Green Gradient Mesh ──── */
   .gradient-mesh {
     background: radial-gradient(
         ellipse 80% 50% at 20% 40%,
-        oklch(0.62 0.2 255 / 0.12),
+        oklch(0.85 0.25 145 / 0.1),
         transparent
       ),
       radial-gradient(
         ellipse 60% 60% at 80% 20%,
-        oklch(0.55 0.18 270 / 0.08),
+        oklch(0.72 0.18 155 / 0.07),
         transparent
       ),
       radial-gradient(
         ellipse 70% 50% at 50% 80%,
-        oklch(0.78 0.13 200 / 0.06),
+        oklch(0.65 0.15 170 / 0.05),
         transparent
       );
   }
@@ -513,8 +499,8 @@
   }
   .pill-dark {
     @apply inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all;
-    background: var(--accent-blue);
-    color: oklch(0.98 0.005 240);
+    background: var(--neon);
+    color: oklch(0.11 0.025 255);
   }
   .pill-dark:hover {
     transform: scale(1.03);
@@ -522,8 +508,8 @@
   }
   .pill-accent {
     @apply inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium transition-all;
-    background: var(--accent-blue);
-    color: oklch(0.98 0.005 240);
+    background: var(--neon);
+    color: oklch(0.11 0.025 255);
   }
   .pill-accent:hover {
     transform: scale(1.03);
@@ -549,15 +535,15 @@
   .card-hover:hover {
     transform: translateY(-4px);
     box-shadow: var(--shadow-elevated);
-    border-color: oklch(0.62 0.2 255 / 0.25);
+    border-color: oklch(0.85 0.25 145 / 0.25);
   }
 
   /* ──── Hero Glow ──── */
   .hero-glow {
     background: radial-gradient(
       ellipse 80% 55% at 50% 35%,
-      oklch(0.62 0.2 255 / 0.2) 0%,
-      oklch(0.55 0.18 270 / 0.1) 40%,
+      oklch(0.85 0.25 145 / 0.15) 0%,
+      oklch(0.72 0.18 155 / 0.08) 40%,
       transparent 70%
     );
     filter: blur(40px);
@@ -566,17 +552,77 @@
   /* ──── Status Dot ──── */
   .status-dot {
     @apply inline-block size-2 rounded-full;
-    background: var(--accent-cyan);
-    box-shadow: 0 0 8px oklch(0.78 0.13 200 / 0.6);
+    background: var(--neon);
+    box-shadow: 0 0 8px oklch(0.85 0.25 145 / 0.6);
     animation: status-pulse 2s ease-in-out infinite;
   }
   @keyframes status-pulse {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0.5;
-    }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* ══════════════════════════════════════════
+     FLOATING ORBS — helixearth-inspired
+     ══════════════════════════════════════════ */
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    will-change: transform;
+  }
+  .orb-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, oklch(0.85 0.25 145 / 0.5), transparent 70%);
+    top: -10%;
+    left: -5%;
+    animation: orb-float-1 25s ease-in-out infinite;
+  }
+  .orb-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, oklch(0.72 0.18 155 / 0.35), transparent 70%);
+    top: 30%;
+    right: -8%;
+    animation: orb-float-2 30s ease-in-out infinite;
+  }
+  .orb-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, oklch(0.65 0.15 170 / 0.3), transparent 70%);
+    bottom: 10%;
+    left: 20%;
+    animation: orb-float-3 22s ease-in-out infinite;
+  }
+  .orb-4 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, oklch(0.55 0.12 180 / 0.25), transparent 70%);
+    top: 60%;
+    right: 25%;
+    animation: orb-float-4 28s ease-in-out infinite;
+  }
+  @keyframes orb-float-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(80px, 60px) scale(1.1); }
+    50% { transform: translate(30px, 120px) scale(0.95); }
+    75% { transform: translate(-50px, 40px) scale(1.05); }
+  }
+  @keyframes orb-float-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-70px, 80px) scale(1.05); }
+    50% { transform: translate(-120px, 20px) scale(1.1); }
+    75% { transform: translate(-40px, -60px) scale(0.95); }
+  }
+  @keyframes orb-float-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(100px, -50px) scale(1.1); }
+    66% { transform: translate(40px, -100px) scale(0.9); }
+  }
+  @keyframes orb-float-4 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-60px, -80px) scale(1.08); }
+    66% { transform: translate(50px, 40px) scale(0.95); }
   }
 }

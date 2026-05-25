@@ -29,7 +29,7 @@ export function Testimonials() {
                 {q.quote}
               </blockquote>
               <figcaption className="mt-8 flex items-center gap-3">
-                <div className="size-10 rounded-full bg-gradient-to-br from-foreground to-accent-blue" />
+                <div className="size-10 rounded-full bg-gradient-to-br from-foreground to-neon" />
                 <div>
                   <div className="text-sm font-heading font-semibold">{q.name}</div>
                   <div className="text-xs text-muted-foreground">{q.role}</div>

@@ -14,21 +14,21 @@ const works = [
     tag: "E-Commerce & Retail",
     stack: "Swift / Unity / ARKit",
     blurb: "Try-before-you-buy AR engine that cut product returns by 38%.",
-    accent: "from-accent-blue to-accent-cyan",
+    accent: "from-neon to-neon-soft",
   },
   {
     title: "Vectra Flow",
     tag: "Automotive & Logistics",
     stack: "Valhalla Engine / Kotlin / GIS",
     blurb: "Millisecond routing engine for last-mile fleet operations across the EU.",
-    accent: "from-foreground to-accent-blue",
+    accent: "from-foreground to-neon",
   },
   {
     title: "SyncBridge",
     tag: "Enterprise Middleware",
     stack: "Node.js / API Orchestration / n8n",
     blurb: "Zero-error invoice-to-fulfillment orchestration for B2B accounting systems.",
-    accent: "from-accent-blue to-foreground",
+    accent: "from-neon to-foreground",
   },
 ];
 
@@ -47,7 +47,7 @@ export function SelectedWorks() {
         <ScrollReveal delay={100}>
           <a
             href="/portfolio"
-            className="hidden md:inline-flex items-center gap-2 text-sm font-medium hover:text-accent-blue transition-colors"
+            className="hidden md:inline-flex items-center gap-2 text-sm font-medium hover:text-neon transition-colors"
           >
             View all <ArrowUpRight size={16} />
           </a>
@@ -83,7 +83,7 @@ export function SelectedWorks() {
                   </div>
                   <p className="mt-3 text-foreground/80 text-sm leading-relaxed">{w.blurb}</p>
                 </div>
-                <ArrowUpRight className="shrink-0 mt-1 text-muted-foreground group-hover:text-accent-blue group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+                <ArrowUpRight className="shrink-0 mt-1 text-muted-foreground group-hover:text-neon group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
               </div>
             </article>
           </ScrollReveal>

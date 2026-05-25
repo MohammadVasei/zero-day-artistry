@@ -49,7 +49,7 @@ export function Hero() {
           </TextReveal>
           <TextReveal
             as="span"
-            className="block text-display text-5xl md:text-7xl lg:text-[6rem] mt-2 text-accent-blue"
+            className="block text-display text-5xl md:text-7xl lg:text-[6rem] mt-2 text-neon"
             staggerMs={60}
           >
             from zero to scale.
@@ -60,7 +60,7 @@ export function Hero() {
         <ScrollReveal delay={300}>
           <div className="mt-14 grid md:grid-cols-3 items-center gap-8">
             <div className="flex md:justify-start justify-center">
-              <span className="font-mono text-xs tracking-widest uppercase text-accent-cyan">
+              <span className="font-mono text-xs tracking-widest uppercase text-neon-soft">
                 Est. 2011
               </span>
             </div>
@@ -88,7 +88,7 @@ export function Hero() {
                 <div className="flex items-center gap-1.5">
                   <span className="size-3 rounded-full bg-red-500/80" />
                   <span className="size-3 rounded-full bg-yellow-500/80" />
-                  <span className="size-3 rounded-full bg-accent-blue" />
+                  <span className="size-3 rounded-full bg-neon" />
                 </div>
                 <span className="text-[11px] text-white/40 font-mono">
                   root@zeroday — zsh
@@ -102,13 +102,13 @@ export function Hero() {
                     className="term-line flex gap-3"
                     style={{ animationDelay: `${l.delay}ms` }}
                   >
-                    <span className="text-accent-blue select-none">
+                    <span className="text-neon select-none">
                       {l.prompt}
                     </span>
                     <span
                       className={
                         l.ok
-                          ? "text-accent-cyan"
+                          ? "text-neon-soft"
                           : l.muted
                             ? "text-white/45"
                             : "text-white/90"
@@ -122,7 +122,7 @@ export function Hero() {
                   className="term-line flex gap-3 mt-2"
                   style={{ animationDelay: "4600ms" }}
                 >
-                  <span className="text-accent-blue select-none">$</span>
+                  <span className="text-neon select-none">$</span>
                   <span className="term-caret text-white/90" />
                 </div>
               </div>
