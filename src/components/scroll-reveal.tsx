@@ -21,12 +21,14 @@ export function ScrollReveal({
   delay?: number;
   as?: keyof JSX.IntrinsicElements;
 }) {
-  const ref = useScrollReveal<HTMLDivElement>({ threshold: 0.15 });
+  const { ref, isRevealed } = useScrollReveal<HTMLDivElement>({
+    threshold: 0.15,
+  });
 
   return (
     <Tag
       ref={ref as any}
-      className={`${variantClass[variant]} ${className}`}
+      className={`${variantClass[variant]} ${isRevealed ? "revealed" : ""} ${className}`}
       style={delay ? { transitionDelay: `${delay}ms` } : undefined}
     >
       {children}

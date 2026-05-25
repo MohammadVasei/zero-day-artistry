@@ -1,5 +1,12 @@
 import { useScrollReveal } from "@/hooks/use-scroll-reveal";
 
+/**
+ * Splits text into words and animates each on scroll entry.
+ * Each word gets a staggered delay for a cinematic reveal.
+ *
+ * SSR-safe: renders with `revealed` class so content is visible
+ * before JavaScript hydrates.
+ */
 export function TextReveal({
   children,
   className = "",
@@ -11,11 +18,14 @@ export function TextReveal({
   staggerMs?: number;
   as?: keyof JSX.IntrinsicElements;
 }) {
-  const ref = useScrollReveal<HTMLElement>({ threshold: 0.2 });
+  const { ref, isRevealed } = useScrollReveal<HTMLElement>({ threshold: 0.2 });
   const words = children.split(" ");
 
   return (
-    <Tag ref={ref as any} className={`text-split ${className}`}>
+    <Tag
+      ref={ref as any}
+      className={`text-split ${isRevealed ? "revealed" : ""} ${className}`}
+    >
       {words.map((word, i) => (
         <span key={i} style={{ transitionDelay: `${i * staggerMs}ms` }}>
           {word}
