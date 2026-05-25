@@ -10,7 +10,7 @@ const LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative bg-[oklch(0.06_0.02_255)] border-t border-neon/15 overflow-hidden">
+    <footer className="relative bg-[oklch(0.06_0.005_155)] border-t border-neon/15 overflow-hidden">
       <div className="absolute inset-0 grain opacity-20 pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-8">
