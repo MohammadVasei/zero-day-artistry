@@ -84,7 +84,7 @@ export function Hero() {
         <ScrollReveal delay={500}>
           <div className="relative mt-16 mx-auto max-w-3xl">
             <div className="terminal">
-              <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/10 bg-black/20">
+              <div className="flex items-center justify-between px-4 py-2.5 border-b border-border bg-secondary/50">
                 <div className="flex items-center gap-1.5">
                   <span className="size-3 rounded-full bg-red-500/80" />
                   <span className="size-3 rounded-full bg-yellow-500/80" />
