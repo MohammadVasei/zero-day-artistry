@@ -5,8 +5,8 @@ import logo from "@/assets/zeroday-logo.png";
 const LINKS = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
-  { to: "/portfolio", label: "Portfolio" },
   { to: "/team", label: "Team" },
+  { to: "/portfolio", label: "Portfolio" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
