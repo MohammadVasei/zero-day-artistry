@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import { useTheme } from "@/hooks/use-theme";
 import logo from "@/assets/zeroday-logo.png";
 
 const NAV_LINKS = [
@@ -15,14 +16,16 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
   const headerRef = useRef<HTMLElement>(null);
+  const { theme, toggle } = useTheme();
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      // Calculate scroll progress (0 → 100)
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent =
+        docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
       setProgress(Math.min(100, Math.max(0, scrollPercent)));
     };
 
@@ -42,7 +45,7 @@ export function SiteHeader() {
               : "px-6 py-3 max-w-4xl border-neon/15 bg-background/60"
           }`}
       >
-        {/* Scroll progress bar — runs along the bottom of the pill */}
+        {/* Scroll progress bar */}
         <div
           className="absolute bottom-0 left-0 h-[2px] bg-neon transition-all duration-150 ease-out rounded-full"
           style={{
@@ -59,11 +62,12 @@ export function SiteHeader() {
           Skip to main content
         </a>
         <div className="flex items-center justify-between gap-6">
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group shrink-0">
             <img
               src={logo}
               alt="Zero Day Team"
-              className="h-6 w-6 object-contain invert transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_var(--neon)]"
+              className={`h-6 w-6 object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_var(--neon)] ${theme === "dark" ? "invert" : ""}`}
             />
             <span
               className={`font-heading font-bold tracking-[0.15em] uppercase transition-all duration-500 ${
@@ -74,6 +78,7 @@ export function SiteHeader() {
             </span>
           </Link>
 
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
             {NAV_LINKS.map((link) => (
               <Link
@@ -91,7 +96,20 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="hidden md:block shrink-0">
+          {/* Right side: theme toggle + CTA */}
+          <div className="hidden md:flex items-center gap-3 shrink-0">
+            <button
+              onClick={toggle}
+              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              className="rounded-full p-1.5 border border-border hover:border-neon/40
+                hover:bg-neon/10 transition-all duration-300"
+            >
+              {theme === "dark" ? (
+                <Sun size={14} className="text-muted-foreground hover:text-neon" />
+              ) : (
+                <Moon size={14} className="text-muted-foreground hover:text-neon" />
+              )}
+            </button>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-medium
@@ -102,19 +120,35 @@ export function SiteHeader() {
             </Link>
           </div>
 
-          <button
-            aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen(!open)}
-            className="md:hidden rounded-full border border-neon/20 p-2 transition-colors hover:bg-neon/10 hover:border-neon/40"
-          >
-            {open ? (
-              <X size={16} className="text-neon" />
-            ) : (
-              <Menu size={16} />
-            )}
-          </button>
+          {/* Mobile: theme toggle + hamburger */}
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={toggle}
+              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              className="rounded-full p-2 border border-border hover:border-neon/40
+                hover:bg-neon/10 transition-all duration-300"
+            >
+              {theme === "dark" ? (
+                <Sun size={14} className="text-muted-foreground" />
+              ) : (
+                <Moon size={14} className="text-muted-foreground" />
+              )}
+            </button>
+            <button
+              aria-label={open ? "Close menu" : "Open menu"}
+              onClick={() => setOpen(!open)}
+              className="rounded-full border border-neon/20 p-2 transition-colors hover:bg-neon/10 hover:border-neon/40"
+            >
+              {open ? (
+                <X size={16} className="text-neon" />
+              ) : (
+                <Menu size={16} />
+              )}
+            </button>
+          </div>
         </div>
 
+        {/* Mobile dropdown */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-300 ${
             open ? "max-h-64 mt-3 pt-3 border-t border-neon/10" : "max-h-0"

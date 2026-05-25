@@ -10,7 +10,7 @@ const LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="relative bg-[oklch(0.06_0.005_155)] border-t border-neon/15 overflow-hidden">
+    <footer className="relative bg-foreground text-background border-t border-neon/15 overflow-hidden">
       <div className="absolute inset-0 grain opacity-20 pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-8">
@@ -26,14 +26,14 @@ export function SiteFooter() {
                 Zero Day
               </span>
             </div>
-            <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
+            <p className="text-sm text-background/60 max-w-xs leading-relaxed">
               A specialized engineering collective building the invisible
               infrastructure that powers modern enterprises.
             </p>
           </div>
 
           <div>
-            <h3 className="text-xs font-heading font-bold tracking-widest uppercase text-muted-foreground mb-4">
+            <h3 className="text-xs font-heading font-bold tracking-widest uppercase text-background/60 mb-4">
               Navigation
             </h3>
             <nav className="flex flex-col gap-2">
@@ -41,7 +41,7 @@ export function SiteFooter() {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className="text-sm text-muted-foreground hover:text-neon transition-colors"
+                  className="text-sm text-background/60 hover:text-neon transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -50,10 +50,10 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="text-xs font-heading font-bold tracking-widest uppercase text-muted-foreground mb-4">
+            <h3 className="text-xs font-heading font-bold tracking-widest uppercase text-background/60 mb-4">
               Contact
             </h3>
-            <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+            <div className="flex flex-col gap-2 text-sm text-background/60">
               <span className="hover:text-neon transition-colors">hello@zerodayteam.site</span>
               <span className="hover:text-neon transition-colors">Stockholm / Berlin / Remote</span>
             </div>
@@ -61,7 +61,7 @@ export function SiteFooter() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-background/60">
             &copy; {new Date().getFullYear()} Zero Day Team. All rights
             reserved.
           </p>
