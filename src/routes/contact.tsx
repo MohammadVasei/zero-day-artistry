@@ -10,9 +10,16 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Zero Day Development" },
-      { name: "description", content: "Bring us your hardest middleware, industrial SaaS, AR, and logistics problems. We respond within 24 hours." },
+      {
+        name: "description",
+        content:
+          "Bring us your hardest middleware, industrial SaaS, AR, and logistics problems. We respond within 24 hours.",
+      },
       { property: "og:title", content: "Contact Zero Day Development" },
-      { property: "og:description", content: "Reach the Zero Day collective for partnerships and high-stakes engineering work." },
+      {
+        property: "og:description",
+        content: "Reach the Zero Day collective for partnerships and high-stakes engineering work.",
+      },
     ],
   }),
   component: Contact,
@@ -58,11 +65,13 @@ function Contact() {
         <section className="relative mx-auto max-w-6xl px-6 py-20 grid md:grid-cols-2 gap-14">
           <ScrollReveal variant="left">
             <div>
-              <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">/ Contact</p>
+              <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">
+                / Contact
+              </p>
               <h1 className="text-display text-5xl md:text-6xl mt-4">Let's talk infrastructure.</h1>
               <p className="mt-6 text-muted-foreground max-w-md leading-relaxed">
-                Whether it's a Valhalla rebuild, a middleware migration, or a brand-new AR commerce engine — tell us
-                what you're up against.
+                Whether it's a Valhalla rebuild, a middleware migration, or a brand-new AR commerce
+                engine — tell us what you're up against.
               </p>
               <div className="mt-10 space-y-4 text-sm">
                 <div className="flex items-center gap-3">
@@ -76,12 +85,12 @@ function Contact() {
           </ScrollReveal>
 
           <ScrollReveal delay={200}>
-            <form
-              onSubmit={handleSubmit}
-              className="glass-card rounded-3xl p-8 space-y-5"
-            >
+            <form onSubmit={handleSubmit} className="glass-card rounded-3xl p-8 space-y-5">
               <div>
-                <label htmlFor="name" className="text-xs uppercase tracking-widest text-muted-foreground font-mono">
+                <label
+                  htmlFor="name"
+                  className="text-xs uppercase tracking-widest text-muted-foreground font-mono"
+                >
                   Name
                 </label>
                 <input
@@ -93,7 +102,10 @@ function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="text-xs uppercase tracking-widest text-muted-foreground font-mono">
+                <label
+                  htmlFor="email"
+                  className="text-xs uppercase tracking-widest text-muted-foreground font-mono"
+                >
                   Email
                 </label>
                 <input
@@ -106,7 +118,10 @@ function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="project" className="text-xs uppercase tracking-widest text-muted-foreground font-mono">
+                <label
+                  htmlFor="project"
+                  className="text-xs uppercase tracking-widest text-muted-foreground font-mono"
+                >
                   Project
                 </label>
                 <textarea

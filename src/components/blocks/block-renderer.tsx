@@ -52,25 +52,45 @@ function RenderBlock({ block }: { block: Block }) {
 
 /* ─── Block components ─────────────────────────────────────────── */
 
-function HeroBlock({ eyebrow, headline, subheadline, primaryCtaLabel, primaryCtaHref, secondaryCtaLabel, secondaryCtaHref }: Block) {
+function HeroBlock({
+  eyebrow,
+  headline,
+  subheadline,
+  primaryCtaLabel,
+  primaryCtaHref,
+  secondaryCtaLabel,
+  secondaryCtaHref,
+}: Block) {
   return (
     <section className="relative overflow-hidden scanlines">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-[640px]">
         <div className="hero-glow absolute inset-x-[-10%] top-[-10%] h-[680px] opacity-70" />
       </div>
       <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-16 text-center">
-        {eyebrow && <div className="pill bg-background/80 backdrop-blur inline-flex mb-8">{eyebrow}</div>}
-        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight">{headline}</h1>
-        {subheadline && <p className="mt-6 mx-auto max-w-2xl text-lg text-muted-foreground">{subheadline}</p>}
+        {eyebrow && (
+          <div className="pill bg-background/80 backdrop-blur inline-flex mb-8">{eyebrow}</div>
+        )}
+        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight">
+          {headline}
+        </h1>
+        {subheadline && (
+          <p className="mt-6 mx-auto max-w-2xl text-lg text-muted-foreground">{subheadline}</p>
+        )}
         {(primaryCtaLabel || secondaryCtaLabel) && (
           <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             {primaryCtaLabel && (
-              <a href={primaryCtaHref || "#"} className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90">
+              <a
+                href={primaryCtaHref || "#"}
+                className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+              >
                 {primaryCtaLabel} <ArrowUpRight size={16} />
               </a>
             )}
             {secondaryCtaLabel && (
-              <a href={secondaryCtaHref || "#"} className="inline-flex items-center gap-2 rounded-md border border-input px-5 py-2.5 text-sm font-medium hover:bg-accent">
+              <a
+                href={secondaryCtaHref || "#"}
+                className="inline-flex items-center gap-2 rounded-md border border-input px-5 py-2.5 text-sm font-medium hover:bg-accent"
+              >
                 {secondaryCtaLabel}
               </a>
             )}
@@ -86,19 +106,34 @@ function TerminalBlock({ title = "root@zeroday — zsh", lines = [] }: Block) {
     <section className="mx-auto max-w-3xl px-6 py-12">
       <div className="terminal">
         <div className="terminal-titlebar">
-          <span className="dot dot-red" /><span className="dot dot-yellow" /><span className="dot dot-green" />
+          <span className="dot dot-red" />
+          <span className="dot dot-yellow" />
+          <span className="dot dot-green" />
           <span className="ml-3 text-xs text-muted-foreground font-mono">{title}</span>
         </div>
         <div className="terminal-body font-mono text-sm">
           {lines.map((l: any, i: number) => (
-            <div key={i} className="term-line" style={{ animationDelay: `${l.delayMs ?? i * 400}ms` }}>
+            <div
+              key={i}
+              className="term-line"
+              style={{ animationDelay: `${l.delayMs ?? i * 400}ms` }}
+            >
               <span className="text-primary mr-2">{l.prompt}</span>
-              <span className={
-                l.tone === "muted" ? "text-muted-foreground" :
-                l.tone === "ok" ? "text-primary" :
-                l.tone === "warn" ? "text-yellow-400" :
-                l.tone === "error" ? "text-red-400" : ""
-              }>{l.text}</span>
+              <span
+                className={
+                  l.tone === "muted"
+                    ? "text-muted-foreground"
+                    : l.tone === "ok"
+                      ? "text-primary"
+                      : l.tone === "warn"
+                        ? "text-yellow-400"
+                        : l.tone === "error"
+                          ? "text-red-400"
+                          : ""
+                }
+              >
+                {l.text}
+              </span>
             </div>
           ))}
           <div className="term-caret">▍</div>
@@ -109,7 +144,14 @@ function TerminalBlock({ title = "root@zeroday — zsh", lines = [] }: Block) {
 }
 
 function RichTextBlock({ content, maxWidth = "prose" }: Block) {
-  const width = maxWidth === "narrow" ? "max-w-2xl" : maxWidth === "wide" ? "max-w-5xl" : maxWidth === "full" ? "max-w-none" : "max-w-3xl";
+  const width =
+    maxWidth === "narrow"
+      ? "max-w-2xl"
+      : maxWidth === "wide"
+        ? "max-w-5xl"
+        : maxWidth === "full"
+          ? "max-w-none"
+          : "max-w-3xl";
   return (
     <section className={`mx-auto ${width} px-6 py-10`}>
       <div className="prose prose-invert max-w-none">{serializeLexical(content)}</div>
@@ -120,12 +162,27 @@ function RichTextBlock({ content, maxWidth = "prose" }: Block) {
 function ImageBlock({ image, caption, aspect = "auto" }: Block) {
   const src = typeof image === "string" ? image : image?.url;
   const alt = (typeof image === "object" && image?.alt) || caption || "";
-  const aspectClass = aspect === "square" ? "aspect-square" : aspect === "video" ? "aspect-video" : aspect === "wide" ? "aspect-[21/9]" : "";
+  const aspectClass =
+    aspect === "square"
+      ? "aspect-square"
+      : aspect === "video"
+        ? "aspect-video"
+        : aspect === "wide"
+          ? "aspect-[21/9]"
+          : "";
   if (!src) return null;
   return (
     <figure className="mx-auto max-w-5xl px-6 py-10">
-      <img src={resolveMediaUrl(src)} alt={alt} className={`w-full rounded-lg object-cover ${aspectClass}`} />
-      {caption && <figcaption className="mt-3 text-center text-sm text-muted-foreground">{caption}</figcaption>}
+      <img
+        src={resolveMediaUrl(src)}
+        alt={alt}
+        className={`w-full rounded-lg object-cover ${aspectClass}`}
+      />
+      {caption && (
+        <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+          {caption}
+        </figcaption>
+      )}
     </figure>
   );
 }
@@ -137,7 +194,9 @@ function ProcessStepsBlock({ title, steps = [] }: Block) {
       <ol className="grid gap-6 md:grid-cols-3">
         {steps.map((s: any, i: number) => (
           <li key={i} className="rounded-lg border border-border p-6 bg-card/40">
-            <div className="text-xs font-mono text-primary mb-2">{s.number ?? String(i + 1).padStart(2, "0")}</div>
+            <div className="text-xs font-mono text-primary mb-2">
+              {s.number ?? String(i + 1).padStart(2, "0")}
+            </div>
             <h3 className="text-lg font-medium">{s.title}</h3>
             {s.description && <p className="mt-2 text-sm text-muted-foreground">{s.description}</p>}
           </li>
@@ -153,7 +212,9 @@ function MarqueeBlock({ items = [], speed = "normal" }: Block) {
     <section className="overflow-hidden border-y border-border py-6 my-10">
       <div className="marquee" style={{ animationDuration: dur }}>
         {[...items, ...items].map((it: any, i: number) => (
-          <span key={i} className="mx-8 font-mono text-sm text-muted-foreground whitespace-nowrap">· {it.label}</span>
+          <span key={i} className="mx-8 font-mono text-sm text-muted-foreground whitespace-nowrap">
+            · {it.label}
+          </span>
         ))}
       </div>
     </section>
@@ -168,8 +229,20 @@ function SelectedWorksBlock({ title, projects = [] }: Block) {
         {projects.map((p: any, i: number) => {
           const img = typeof p.image === "string" ? p.image : p.image?.url;
           return (
-            <a key={i} href={p.href || "#"} className="group block rounded-lg border border-border overflow-hidden bg-card/40 hover:border-primary/50 transition">
-              {img && <div className="aspect-video bg-muted overflow-hidden"><img src={resolveMediaUrl(img)} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform" /></div>}
+            <a
+              key={i}
+              href={p.href || "#"}
+              className="group block rounded-lg border border-border overflow-hidden bg-card/40 hover:border-primary/50 transition"
+            >
+              {img && (
+                <div className="aspect-video bg-muted overflow-hidden">
+                  <img
+                    src={resolveMediaUrl(img)}
+                    alt={p.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                  />
+                </div>
+              )}
               <div className="p-5">
                 {p.tag && <div className="text-xs font-mono text-primary mb-2">{p.tag}</div>}
                 <h3 className="text-lg font-medium">{p.title}</h3>
@@ -189,7 +262,10 @@ function CtaBlock({ headline, body, ctaLabel, ctaHref }: Block) {
       <h2 className="font-display text-4xl md:text-6xl">{headline}</h2>
       {body && <p className="mt-4 mx-auto max-w-2xl text-muted-foreground">{body}</p>}
       {ctaLabel && (
-        <a href={ctaHref || "#"} className="mt-8 inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90">
+        <a
+          href={ctaHref || "#"}
+          className="mt-8 inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+        >
           {ctaLabel} <ArrowUpRight size={16} />
         </a>
       )}
@@ -203,7 +279,12 @@ function SpacerBlock({ size = "md" }: Block) {
 }
 
 function HtmlBlock({ html }: Block) {
-  return <section className="mx-auto max-w-5xl px-6 py-10" dangerouslySetInnerHTML={{ __html: html || "" }} />;
+  return (
+    <section
+      className="mx-auto max-w-5xl px-6 py-10"
+      dangerouslySetInnerHTML={{ __html: html || "" }}
+    />
+  );
 }
 
 /* ─── Helpers ─────────────────────────────────────────────────── */
@@ -228,15 +309,24 @@ function serializeLexical(node: any, key: any = 0): any {
   const children = node.children?.map((c: any, i: number) => serializeLexical(c, i));
 
   switch (node.type) {
-    case "paragraph": return <p key={key}>{children}</p>;
+    case "paragraph":
+      return <p key={key}>{children}</p>;
     case "heading": {
       const Tag = (node.tag || "h2") as any;
       return <Tag key={key}>{children}</Tag>;
     }
-    case "list": return node.tag === "ol" ? <ol key={key}>{children}</ol> : <ul key={key}>{children}</ul>;
-    case "listitem": return <li key={key}>{children}</li>;
-    case "link": return <a key={key} href={node.fields?.url || "#"}>{children}</a>;
-    case "linebreak": return <br key={key} />;
+    case "list":
+      return node.tag === "ol" ? <ol key={key}>{children}</ol> : <ul key={key}>{children}</ul>;
+    case "listitem":
+      return <li key={key}>{children}</li>;
+    case "link":
+      return (
+        <a key={key} href={node.fields?.url || "#"}>
+          {children}
+        </a>
+      );
+    case "linebreak":
+      return <br key={key} />;
     case "text": {
       let el: any = node.text;
       if (node.format & 1) el = <strong>{el}</strong>;
@@ -245,6 +335,7 @@ function serializeLexical(node: any, key: any = 0): any {
       if (node.format & 16) el = <code>{el}</code>;
       return <span key={key}>{el}</span>;
     }
-    default: return children ? <div key={key}>{children}</div> : null;
+    default:
+      return children ? <div key={key}>{children}</div> : null;
   }
 }

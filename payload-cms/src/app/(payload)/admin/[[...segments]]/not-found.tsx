@@ -3,7 +3,10 @@ import { NotFoundPage, generatePageMetadata } from "@payloadcms/next/views";
 
 import { importMap } from "../importMap";
 
-type Args = { params: Promise<{ segments: string[] }>; searchParams: Promise<{ [k: string]: string | string[] }> };
+type Args = {
+  params: Promise<{ segments: string[] }>;
+  searchParams: Promise<{ [k: string]: string | string[] }>;
+};
 
 export const generateMetadata = ({ params, searchParams }: Args) =>
   generatePageMetadata({ config, params, searchParams });

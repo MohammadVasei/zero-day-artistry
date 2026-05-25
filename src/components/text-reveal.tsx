@@ -17,10 +17,7 @@ export function TextReveal({
   return (
     <Tag ref={ref as any} className={`text-split ${className}`}>
       {words.map((word, i) => (
-        <span
-          key={i}
-          style={{ transitionDelay: `${i * staggerMs}ms` }}
-        >
+        <span key={i} style={{ transitionDelay: `${i * staggerMs}ms` }}>
           {word}
           {i < words.length - 1 ? "\u00A0" : ""}
         </span>

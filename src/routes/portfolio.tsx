@@ -11,9 +11,17 @@ export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
       { title: "Portfolio — Zero Day Development" },
-      { name: "description", content: "Selected work: GridMaster industrial SaaS, Specra AR retail, Vectra Flow logistics, SyncBridge middleware." },
+      {
+        name: "description",
+        content:
+          "Selected work: GridMaster industrial SaaS, Specra AR retail, Vectra Flow logistics, SyncBridge middleware.",
+      },
       { property: "og:title", content: "Portfolio — Zero Day Development" },
-      { property: "og:description", content: "Industrial SaaS, AR commerce, logistics, and middleware projects shipped at scale." },
+      {
+        property: "og:description",
+        content:
+          "Industrial SaaS, AR commerce, logistics, and middleware projects shipped at scale.",
+      },
     ],
   }),
   component: Portfolio,
@@ -28,7 +36,9 @@ function Portfolio() {
           <div className="absolute inset-x-0 top-0 h-[300px] gradient-mesh" />
           <div className="absolute inset-x-0 top-0 h-[300px] grain" />
           <ScrollReveal>
-            <p className="relative text-xs tracking-widest text-muted-foreground uppercase font-mono">/ Portfolio</p>
+            <p className="relative text-xs tracking-widest text-muted-foreground uppercase font-mono">
+              / Portfolio
+            </p>
           </ScrollReveal>
           <h1 className="relative mt-4">
             <TextReveal className="text-display text-5xl md:text-7xl" staggerMs={50}>

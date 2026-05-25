@@ -27,7 +27,8 @@ export const SiteSettings: GlobalConfig = {
     {
       name: "footerTagline",
       type: "textarea",
-      defaultValue: "A specialized engineering collective building the invisible infrastructure that powers modern enterprises.",
+      defaultValue:
+        "A specialized engineering collective building the invisible infrastructure that powers modern enterprises.",
     },
     {
       name: "socialLinks",

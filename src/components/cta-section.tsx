@@ -17,8 +17,8 @@ export function CTASection() {
 
         <ScrollReveal delay={150}>
           <p className="mt-6 text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            Always open to new collaborations, complex middleware puzzles, and global deployment challenges.
-            Let's work together to bring your stack into its next decade.
+            Always open to new collaborations, complex middleware puzzles, and global deployment
+            challenges. Let's work together to bring your stack into its next decade.
           </p>
         </ScrollReveal>
 

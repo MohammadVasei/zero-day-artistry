@@ -20,7 +20,10 @@ export const Route = createFileRoute("/")({
           "A specialized engineering collective building middleware, industrial SaaS, AR commerce, and logistics platforms for enterprises since 2011.",
       },
       { property: "og:title", content: "Zero Day Development" },
-      { property: "og:description", content: "From Zero Day to Scale — middleware, AR retail, industrial SaaS, logistics." },
+      {
+        property: "og:description",
+        content: "From Zero Day to Scale — middleware, AR retail, industrial SaaS, logistics.",
+      },
     ],
   }),
   component: Index,

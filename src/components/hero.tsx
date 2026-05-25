@@ -40,21 +40,19 @@ export function Hero() {
           <div className="mt-14 grid md:grid-cols-3 items-center gap-8">
             <div className="flex md:justify-start justify-center">
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <span className="font-mono text-xs tracking-widest uppercase text-accent-gold">Est. 2011</span>
+                <span className="font-mono text-xs tracking-widest uppercase text-accent-gold">
+                  Est. 2011
+                </span>
               </div>
             </div>
 
             <p className="text-center text-sm md:text-base text-muted-foreground max-w-md mx-auto leading-relaxed">
-              A collective engineering team building the invisible middleware,
-              industrial SaaS, and AR commerce layers that move enterprises forward.
+              A collective engineering team building the invisible middleware, industrial SaaS, and
+              AR commerce layers that move enterprises forward.
             </p>
 
             <div className="flex md:justify-end justify-center">
-              <a
-                ref={ctaRef}
-                href="/contact"
-                className="pill-accent magnetic"
-              >
+              <a ref={ctaRef} href="/contact" className="pill-accent magnetic">
                 Start a Project
                 <ArrowUpRight size={16} />
               </a>
@@ -70,10 +68,7 @@ export function Hero() {
               { value: "14+", label: "Years Shipping" },
               { value: "100%", label: "Error Reduction" },
             ].map((stat) => (
-              <div
-                key={stat.label}
-                className="glass-card rounded-2xl p-6 text-center card-hover"
-              >
+              <div key={stat.label} className="glass-card rounded-2xl p-6 text-center card-hover">
                 <div className="text-2xl md:text-3xl font-heading font-bold">{stat.value}</div>
                 <div className="mt-1 text-xs text-muted-foreground font-mono tracking-wide uppercase">
                   {stat.label}

@@ -10,9 +10,16 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — Zero Day Development" },
-      { name: "description", content: "A collective of high-stakes engineers building the invisible layers of modern enterprise tech since 2011." },
+      {
+        name: "description",
+        content:
+          "A collective of high-stakes engineers building the invisible layers of modern enterprise tech since 2011.",
+      },
       { property: "og:title", content: "About Zero Day Development" },
-      { property: "og:description", content: "From a freelance collective to a high-stakes engineering powerhouse." },
+      {
+        property: "og:description",
+        content: "From a freelance collective to a high-stakes engineering powerhouse.",
+      },
     ],
   }),
   component: About,
@@ -27,7 +34,9 @@ function About() {
           <div className="absolute inset-x-0 top-0 h-[400px] gradient-mesh" />
           <div className="absolute inset-x-0 top-0 h-[400px] grain" />
           <ScrollReveal>
-            <p className="relative text-xs tracking-widest text-muted-foreground uppercase font-mono">/ About</p>
+            <p className="relative text-xs tracking-widest text-muted-foreground uppercase font-mono">
+              / About
+            </p>
           </ScrollReveal>
           <h1 className="relative mt-4">
             <TextReveal className="text-display text-5xl md:text-7xl lg:text-8xl" staggerMs={50}>
@@ -36,8 +45,8 @@ function About() {
           </h1>
           <ScrollReveal delay={400}>
             <p className="relative mt-6 text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              We build the middleware, orchestration, and infrastructure most teams never see — the kind that
-              quietly carries millions of transactions, routes, and packets every day.
+              We build the middleware, orchestration, and infrastructure most teams never see — the
+              kind that quietly carries millions of transactions, routes, and packets every day.
             </p>
           </ScrollReveal>
         </section>

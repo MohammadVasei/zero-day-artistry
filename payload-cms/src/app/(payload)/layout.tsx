@@ -2,10 +2,7 @@
 import type { Metadata } from "next";
 import config from "@payload-config";
 import "@payloadcms/next/css";
-import {
-  RootLayout,
-  generatePageMetadata,
-} from "@payloadcms/next/layouts";
+import { RootLayout, generatePageMetadata } from "@payloadcms/next/layouts";
 
 import { importMap } from "./admin/importMap";
 
@@ -15,7 +12,9 @@ export const generateMetadata = ({ params, searchParams }: any): Promise<Metadat
   generatePageMetadata({ config, params, searchParams });
 
 const Layout = ({ children }: Args) => (
-  <RootLayout config={config} importMap={importMap}>{children}</RootLayout>
+  <RootLayout config={config} importMap={importMap}>
+    {children}
+  </RootLayout>
 );
 
 export default Layout;

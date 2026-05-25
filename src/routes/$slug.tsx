@@ -15,7 +15,8 @@ export const Route = createFileRoute("/$slug")({
     if (!page) return { meta: [{ title: "Not found" }] };
     const title = page.seo?.title || `${page.title} — Zero Day`;
     const description = page.seo?.description || "";
-    const ogImage = typeof page.seo?.ogImage === "object" ? page.seo?.ogImage?.url : page.seo?.ogImage;
+    const ogImage =
+      typeof page.seo?.ogImage === "object" ? page.seo?.ogImage?.url : page.seo?.ogImage;
     return {
       meta: [
         { title },

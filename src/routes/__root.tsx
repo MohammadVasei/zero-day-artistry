@@ -73,16 +73,36 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Zero Day Development — Architecting digital resilience" },
-      { name: "description", content: "A specialized engineering collective building middleware, industrial SaaS, AR commerce, and logistics platforms since 2011." },
+      {
+        name: "description",
+        content:
+          "A specialized engineering collective building middleware, industrial SaaS, AR commerce, and logistics platforms since 2011.",
+      },
       { name: "author", content: "Zero Day Development" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Zero Day Development — Architecting digital resilience" },
       { name: "twitter:title", content: "Zero Day Development — Architecting digital resilience" },
-      { property: "og:description", content: "A specialized engineering collective building middleware, industrial SaaS, AR commerce, and logistics platforms since 2011." },
-      { name: "twitter:description", content: "A specialized engineering collective building middleware, industrial SaaS, AR commerce, and logistics platforms since 2011." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9d6efb28-d520-490c-a0ea-3ca42391160e/id-preview-42f6386c--a487fd80-a7bc-45c1-b47a-a18e8351a0c0.lovable.app-1778934762389.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9d6efb28-d520-490c-a0ea-3ca42391160e/id-preview-42f6386c--a487fd80-a7bc-45c1-b47a-a18e8351a0c0.lovable.app-1778934762389.png" },
+      {
+        property: "og:description",
+        content:
+          "A specialized engineering collective building middleware, industrial SaaS, AR commerce, and logistics platforms since 2011.",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "A specialized engineering collective building middleware, industrial SaaS, AR commerce, and logistics platforms since 2011.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9d6efb28-d520-490c-a0ea-3ca42391160e/id-preview-42f6386c--a487fd80-a7bc-45c1-b47a-a18e8351a0c0.lovable.app-1778934762389.png",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9d6efb28-d520-490c-a0ea-3ca42391160e/id-preview-42f6386c--a487fd80-a7bc-45c1-b47a-a18e8351a0c0.lovable.app-1778934762389.png",
+      },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

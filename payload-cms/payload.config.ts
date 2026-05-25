@@ -42,7 +42,12 @@ const TerminalBlock = {
       fields: [
         { name: "prompt", type: "select", defaultValue: "$", options: ["$", ">", "#"] },
         { name: "text", type: "text", required: true },
-        { name: "tone", type: "select", defaultValue: "default", options: ["default", "muted", "ok", "warn", "error"] },
+        {
+          name: "tone",
+          type: "select",
+          defaultValue: "default",
+          options: ["default", "muted", "ok", "warn", "error"],
+        },
         { name: "delayMs", type: "number", defaultValue: 400 },
       ],
     },
@@ -53,7 +58,12 @@ const RichTextBlock = {
   slug: "richText",
   labels: { singular: "Rich text", plural: "Rich text" },
   fields: [
-    { name: "maxWidth", type: "select", defaultValue: "prose", options: ["prose", "narrow", "wide", "full"] },
+    {
+      name: "maxWidth",
+      type: "select",
+      defaultValue: "prose",
+      options: ["prose", "narrow", "wide", "full"],
+    },
     { name: "content", type: "richText", required: true },
   ],
 };
@@ -64,7 +74,12 @@ const ImageBlock = {
   fields: [
     { name: "image", type: "upload", relationTo: "media", required: true },
     { name: "caption", type: "text" },
-    { name: "aspect", type: "select", defaultValue: "auto", options: ["auto", "square", "video", "wide"] },
+    {
+      name: "aspect",
+      type: "select",
+      defaultValue: "auto",
+      options: ["auto", "square", "video", "wide"],
+    },
   ],
 };
 
@@ -133,17 +148,13 @@ const CtaBlock = {
 const SpacerBlock = {
   slug: "spacer",
   labels: { singular: "Spacer", plural: "Spacers" },
-  fields: [
-    { name: "size", type: "select", defaultValue: "md", options: ["sm", "md", "lg", "xl"] },
-  ],
+  fields: [{ name: "size", type: "select", defaultValue: "md", options: ["sm", "md", "lg", "xl"] }],
 };
 
 const HtmlBlock = {
   slug: "html",
   labels: { singular: "Custom HTML", plural: "Custom HTML" },
-  fields: [
-    { name: "html", type: "code", admin: { language: "html" }, required: true },
-  ],
+  fields: [{ name: "html", type: "code", admin: { language: "html" }, required: true }],
 };
 
 const ALL_BLOCKS = [
@@ -228,7 +239,15 @@ export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || "",
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL,
   admin: { user: Users.slug },
-  collections: [Users, Media, Pages, ContactSubmissions, TestimonialsCollection, CaseStudiesCollection, ProjectsCollection],
+  collections: [
+    Users,
+    Media,
+    Pages,
+    ContactSubmissions,
+    TestimonialsCollection,
+    CaseStudiesCollection,
+    ProjectsCollection,
+  ],
   globals: [SiteSettings],
   editor: lexicalEditor({}),
   db: postgresAdapter({

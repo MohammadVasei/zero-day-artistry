@@ -12,7 +12,9 @@ export function AboutTimeline() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-28">
       <ScrollReveal>
-        <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">/ Who We Are</p>
+        <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">
+          / Who We Are
+        </p>
         <h2 className="text-display text-5xl md:text-7xl mt-3 max-w-3xl">
           Pushing boundaries <span className="text-muted-foreground">since 2011.</span>
         </h2>
@@ -23,13 +25,16 @@ export function AboutTimeline() {
           <div className="rounded-3xl bg-foreground text-background p-8 md:p-10 relative overflow-hidden">
             <div className="absolute inset-0 grain opacity-10 pointer-events-none" />
             <p className="relative text-lg leading-relaxed">
-              At <span className="font-heading font-bold text-accent-gold">Zero Day Development</span>, we don't just
-              build apps — we architect digital resilience. What started in 2011 as a small collective of specialized
-              freelancers has evolved into a powerhouse for high-stakes engineering.
+              At{" "}
+              <span className="font-heading font-bold text-accent-gold">Zero Day Development</span>,
+              we don't just build apps — we architect digital resilience. What started in 2011 as a
+              small collective of specialized freelancers has evolved into a powerhouse for
+              high-stakes engineering.
             </p>
             <p className="relative text-sm text-background/60 mt-6 leading-relaxed">
-              We thrive in the invisible layers of technology — the middleware that keeps enterprises running, the AR
-              engines that transform retail, and the industrial SaaS platforms that monitor the power grid.
+              We thrive in the invisible layers of technology — the middleware that keeps
+              enterprises running, the AR engines that transform retail, and the industrial SaaS
+              platforms that monitor the power grid.
             </p>
           </div>
         </ScrollReveal>

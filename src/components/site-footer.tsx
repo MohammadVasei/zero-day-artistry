@@ -23,8 +23,8 @@ export function SiteFooter() {
               </span>
             </div>
             <p className="text-sm text-background/50 max-w-xs leading-relaxed">
-              A specialized engineering collective building the invisible
-              infrastructure that powers modern enterprises.
+              A specialized engineering collective building the invisible infrastructure that powers
+              modern enterprises.
             </p>
           </div>
 
@@ -64,9 +64,7 @@ export function SiteFooter() {
       </div>
 
       <div className="overflow-hidden pointer-events-none select-none">
-        <h2 className="text-giant text-center text-background/[0.03] -mb-[0.15em]">
-          Zero Day.
-        </h2>
+        <h2 className="text-giant text-center text-background/[0.03] -mb-[0.15em]">Zero Day.</h2>
       </div>
     </footer>
   );

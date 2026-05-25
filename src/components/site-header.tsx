@@ -23,12 +23,12 @@ export function SiteHeader() {
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? "glass border-b border-border/40 shadow-card"
-          : "bg-transparent"
+        scrolled ? "glass border-b border-border/40 shadow-card" : "bg-transparent"
       }`}
     >
-      <a href="#main" className="skip-link">Skip to main content</a>
+      <a href="#main" className="skip-link">
+        Skip to main content
+      </a>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
         <Link to="/" className="flex items-center gap-2.5 group">
           <img

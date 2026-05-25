@@ -2,12 +2,14 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 
 const quotes = [
   {
-    quote: "Zero Day rebuilt our entire orchestration layer in 11 weeks. We've eliminated 100% of manual entry errors since launch.",
+    quote:
+      "Zero Day rebuilt our entire orchestration layer in 11 weeks. We've eliminated 100% of manual entry errors since launch.",
     name: "Daniel Reed",
     role: "Founder, Novalytix",
   },
   {
-    quote: "Their middleware now powers every Valhalla route across our EU fleet. Genuinely the best technical partners we've worked with.",
+    quote:
+      "Their middleware now powers every Valhalla route across our EU fleet. Genuinely the best technical partners we've worked with.",
     name: "Sarah Nguyen",
     role: "Product Manager, FleetOps",
   },

@@ -2,9 +2,21 @@ import { useEffect, useRef, useState } from "react";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
 const steps = [
-  { n: "01", title: "Discover", body: "We audit your stack — from Valhalla routing to Spring Boot — to map every legacy bridge needed." },
-  { n: "02", title: "Design", body: "Architecture diagrams, middleware contracts, and UI flows shipped before a single line of code." },
-  { n: "03", title: "Deliver", body: "Production rollout with zero-downtime migration, observability, and 24/7 SRE handover." },
+  {
+    n: "01",
+    title: "Discover",
+    body: "We audit your stack — from Valhalla routing to Spring Boot — to map every legacy bridge needed.",
+  },
+  {
+    n: "02",
+    title: "Design",
+    body: "Architecture diagrams, middleware contracts, and UI flows shipped before a single line of code.",
+  },
+  {
+    n: "03",
+    title: "Deliver",
+    body: "Production rollout with zero-downtime migration, observability, and 24/7 SRE handover.",
+  },
 ];
 
 function Counter({ target }: { target: string }) {
@@ -20,8 +32,10 @@ function Counter({ target }: { target: string }) {
           let cur = 0;
           const id = setInterval(() => {
             cur += Math.max(1, Math.round(end / 24));
-            if (cur >= end) { setVal(end); clearInterval(id); }
-            else setVal(cur);
+            if (cur >= end) {
+              setVal(end);
+              clearInterval(id);
+            } else setVal(cur);
           }, 40);
           io.disconnect();
         }
@@ -38,7 +52,9 @@ export function ProcessSteps() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-28">
       <ScrollReveal className="text-center mb-16">
-        <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">/ Process</p>
+        <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">
+          / Process
+        </p>
         <h2 className="text-display text-5xl md:text-6xl mt-3">Here's how it works.</h2>
       </ScrollReveal>
 

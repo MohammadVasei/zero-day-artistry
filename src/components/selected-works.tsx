@@ -38,12 +38,17 @@ export function SelectedWorks() {
       <div className="flex items-end justify-between mb-12">
         <ScrollReveal>
           <div>
-            <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">/ Selected Works</p>
+            <p className="text-xs tracking-widest text-muted-foreground uppercase font-mono">
+              / Selected Works
+            </p>
             <h2 className="text-display text-5xl md:text-6xl mt-3">Shipped at scale.</h2>
           </div>
         </ScrollReveal>
         <ScrollReveal delay={100}>
-          <a href="/portfolio" className="hidden md:inline-flex items-center gap-2 text-sm font-medium hover:text-accent-gold transition-colors">
+          <a
+            href="/portfolio"
+            className="hidden md:inline-flex items-center gap-2 text-sm font-medium hover:text-accent-gold transition-colors"
+          >
             View all <ArrowUpRight size={16} />
           </a>
         </ScrollReveal>
@@ -53,21 +58,27 @@ export function SelectedWorks() {
         {works.map((w, i) => (
           <ScrollReveal key={w.title} variant="scale" delay={i * 100}>
             <article className="group relative rounded-3xl border border-border overflow-hidden card-hover bg-card">
-              <div className={`relative aspect-[16/10] bg-gradient-to-br ${w.accent} overflow-hidden`}>
+              <div
+                className={`relative aspect-[16/10] bg-gradient-to-br ${w.accent} overflow-hidden`}
+              >
                 <div className="absolute inset-0 grain opacity-20" />
                 <div className="absolute inset-6 rounded-2xl glass flex flex-col p-6 transition-transform duration-500 group-hover:scale-[1.02]">
                   <div className="flex items-center justify-between text-background/70 text-xs font-mono">
                     <span>{w.tag.toLowerCase().replace(/\s/g, "_")}.tsx</span>
                   </div>
                   <div className="mt-auto">
-                    <h3 className="font-heading text-background text-4xl md:text-5xl font-bold">{w.title}</h3>
+                    <h3 className="font-heading text-background text-4xl md:text-5xl font-bold">
+                      {w.title}
+                    </h3>
                   </div>
                 </div>
               </div>
               <div className="p-6 flex items-start justify-between gap-6">
                 <div>
                   <div className="flex items-center gap-3 text-xs">
-                    <span className="pill !py-1 !px-3 !text-[10px] uppercase tracking-widest font-heading">{w.tag}</span>
+                    <span className="pill !py-1 !px-3 !text-[10px] uppercase tracking-widest font-heading">
+                      {w.tag}
+                    </span>
                     <span className="font-mono text-muted-foreground">{w.stack}</span>
                   </div>
                   <p className="mt-3 text-foreground/80 text-sm leading-relaxed">{w.blurb}</p>
