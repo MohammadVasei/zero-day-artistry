@@ -1,27 +1,73 @@
 import { Link } from "@tanstack/react-router";
 import logo from "@/assets/zeroday-logo.png";
 
+const LINKS = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/portfolio", label: "Portfolio" },
+  { to: "/contact", label: "Contact" },
+] as const;
+
 export function SiteFooter() {
   return (
-    <footer className="bg-background pt-20">
-      <div className="mx-auto max-w-7xl px-6 pb-6 flex flex-col md:flex-row items-start md:items-end justify-between gap-6">
-        <div className="flex items-center gap-3">
-          <img src={logo} alt="Zero Day Team" className="h-8 w-8 object-contain" />
-          <div className="flex gap-6 text-sm text-muted-foreground">
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/portfolio">Portfolio</Link>
-            <Link to="/contact">Contact</Link>
+    <footer className="relative bg-foreground text-background overflow-hidden">
+      <div className="absolute inset-0 grain opacity-10 pointer-events-none" />
+
+      <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-8">
+        <div className="grid md:grid-cols-3 gap-10 pb-12 border-b border-background/10">
+          <div>
+            <div className="flex items-center gap-2.5 mb-4">
+              <img src={logo} alt="Zero Day Team" className="h-7 w-7 object-contain invert" />
+              <span className="text-sm font-heading font-bold tracking-[0.15em] uppercase">
+                Zero Day
+              </span>
+            </div>
+            <p className="text-sm text-background/50 max-w-xs leading-relaxed">
+              A specialized engineering collective building the invisible
+              infrastructure that powers modern enterprises.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-heading font-bold tracking-widest uppercase text-background/40 mb-4">
+              Navigation
+            </h3>
+            <nav className="flex flex-col gap-2">
+              {LINKS.map((link) => (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className="text-sm text-background/60 hover:text-background transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-heading font-bold tracking-widest uppercase text-background/40 mb-4">
+              Contact
+            </h3>
+            <div className="flex flex-col gap-2 text-sm text-background/60">
+              <span>hello@zerodayteam.site</span>
+              <span>Stockholm / Berlin / Remote</span>
+            </div>
           </div>
         </div>
-        <p className="text-xs text-muted-foreground">© 2025 Zero Day Team. All rights reserved.</p>
+
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
+          <p className="text-xs text-background/30">
+            &copy; {new Date().getFullYear()} Zero Day Team. All rights reserved.
+          </p>
+        </div>
       </div>
-      <div className="overflow-hidden">
-        <h2 className="font-display text-[clamp(5rem,22vw,22rem)] leading-[0.85] text-center -mb-6 select-none">
+
+      <div className="overflow-hidden pointer-events-none select-none">
+        <h2 className="text-giant text-center text-background/[0.03] -mb-[0.15em]">
           Zero Day.
         </h2>
       </div>
     </footer>
   );
 }
-
