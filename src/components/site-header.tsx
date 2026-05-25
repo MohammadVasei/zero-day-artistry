@@ -8,6 +8,7 @@ const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/portfolio", label: "Portfolio" },
+  { to: "/team", label: "Team" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -66,7 +67,7 @@ export function SiteHeader() {
           <Link to="/" className="flex items-center gap-2 group shrink-0">
             <img
               src={logo}
-              alt="Zero Day Team"
+              alt="ZeroDayTeam"
               className={`h-6 w-6 object-contain transition-all duration-300 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_var(--neon)] ${theme === "dark" ? "invert" : ""}`}
             />
             <span
@@ -74,7 +75,7 @@ export function SiteHeader() {
                 scrolled ? "text-xs" : "text-sm"
               }`}
             >
-              <span className="text-neon">Zero</span> Day
+              <span className="text-neon">Zero</span>DayTeam
             </span>
           </Link>
 

@@ -158,3 +158,21 @@ export const getSiteSettings = createServerFn({ method: "GET" })
       return await res.json();
     } catch { return null; }
   });
+
+/**
+ * Fetch published team members from Payload CMS.
+ */
+export const getTeamMembers = createServerFn({ method: "GET" })
+  .handler(async (): Promise<any[]> => {
+    const base = process.env.PAYLOAD_API_URL;
+    if (!base) return [];
+    try {
+      const res = await fetch(
+        `${base.replace(/\/$/, "")}/api/team-members?where[status][equals]=published&sort=sortOrder&limit=50`,
+        { headers: { Accept: "application/json" } },
+      );
+      if (!res.ok) return [];
+      const json = await res.json();
+      return json.docs ?? [];
+    } catch { return []; }
+  });

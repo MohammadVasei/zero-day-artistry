@@ -18,13 +18,13 @@ export const Route = createFileRoute("/portfolio")({
   },
   head: () => ({
     meta: [
-      { title: "Portfolio — Zero Day Development" },
+      { title: "Portfolio — ZeroDayTeam" },
       {
         name: "description",
         content:
           "Selected work: GridMaster industrial SaaS, Specra AR retail, Vectra Flow logistics, SyncBridge middleware.",
       },
-      { property: "og:title", content: "Portfolio — Zero Day Development" },
+      { property: "og:title", content: "Portfolio — ZeroDayTeam" },
       {
         property: "og:description",
         content:

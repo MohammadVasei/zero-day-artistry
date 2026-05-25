@@ -73,17 +73,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Zero Day Development — Architecting digital resilience" },
+      { title: "ZeroDayTeam — Architecting digital resilience" },
       {
         name: "description",
         content:
           "A specialized engineering collective building middleware, industrial SaaS, AR commerce, and logistics platforms since 2011.",
       },
-      { name: "author", content: "Zero Day Development" },
+      { name: "author", content: "ZeroDayTeam" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { property: "og:title", content: "Zero Day Development — Architecting digital resilience" },
-      { name: "twitter:title", content: "Zero Day Development — Architecting digital resilience" },
+      { property: "og:title", content: "ZeroDayTeam — Architecting digital resilience" },
+      { name: "twitter:title", content: "ZeroDayTeam — Architecting digital resilience" },
       {
         property: "og:description",
         content:

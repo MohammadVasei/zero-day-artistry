@@ -6,6 +6,7 @@ const LINKS = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/portfolio", label: "Portfolio" },
+  { to: "/team", label: "Team" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
@@ -22,11 +23,11 @@ export function SiteFooter() {
             <div className="flex items-center gap-2.5 mb-4">
               <img
                 src={logo}
-                alt="Zero Day Team"
+                alt="ZeroDayTeam"
                 className={`h-7 w-7 object-contain ${theme === "dark" ? "invert" : ""}`}
               />
               <span className="text-sm font-heading font-bold tracking-[0.15em] uppercase">
-                Zero Day
+                <span className="text-neon">Zero</span>DayTeam
               </span>
             </div>
             <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
@@ -69,7 +70,7 @@ export function SiteFooter() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-6">
           <p className="text-xs text-muted-foreground">
-            &copy; {new Date().getFullYear()} Zero Day Team. All rights
+            &copy; {new Date().getFullYear()} ZeroDayTeam. All rights
             reserved.
           </p>
         </div>
@@ -77,7 +78,7 @@ export function SiteFooter() {
 
       <div className="overflow-hidden pointer-events-none select-none data-flow">
         <h2 className="text-giant text-center text-neon/[0.12] -mb-[0.15em]">
-          Zero Day.
+          ZeroDayTeam.
         </h2>
       </div>
     </footer>

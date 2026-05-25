@@ -9,16 +9,16 @@ import { submitContactForm } from "@/lib/payload.functions";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Zero Day Development" },
+      { title: "Contact — ZeroDayTeam" },
       {
         name: "description",
         content:
           "Bring us your hardest middleware, industrial SaaS, AR, and logistics problems. We respond within 24 hours.",
       },
-      { property: "og:title", content: "Contact Zero Day Development" },
+      { property: "og:title", content: "Contact ZeroDayTeam" },
       {
         property: "og:description",
-        content: "Reach the Zero Day collective for partnerships and high-stakes engineering work.",
+        content: "Reach the ZeroDayTeam collective for partnerships and high-stakes engineering work.",
       },
     ],
   }),

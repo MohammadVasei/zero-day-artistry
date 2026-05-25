@@ -8,6 +8,7 @@ import { Testimonials as TestimonialsCollection } from "./collections/Testimonia
 import { CaseStudies as CaseStudiesCollection } from "./collections/CaseStudies";
 import { Projects as ProjectsCollection } from "./collections/Projects";
 import { SiteSettings } from "./globals/SiteSettings";
+import { TeamMembers as TeamMembersCollection } from "./collections/TeamMembers";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -247,6 +248,7 @@ export default buildConfig({
     TestimonialsCollection,
     CaseStudiesCollection,
     ProjectsCollection,
+    TeamMembersCollection,
   ],
   globals: [SiteSettings],
   editor: lexicalEditor({}),

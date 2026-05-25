@@ -21,17 +21,17 @@ export const Route = createFileRoute("/")({
   },
   head: () => ({
     meta: [
-      { title: "Zero Day Development — Architecting digital resilience" },
+      { title: "ZeroDayTeam — Architecting digital resilience" },
       {
         name: "description",
         content:
           "A specialized engineering collective building middleware, industrial SaaS, AR commerce, and logistics platforms for enterprises since 2011.",
       },
-      { property: "og:title", content: "Zero Day Development" },
+      { property: "og:title", content: "ZeroDayTeam" },
       {
         property: "og:description",
         content:
-          "From Zero Day to Scale — middleware, AR retail, industrial SaaS, logistics.",
+          "From ZeroDayTeam to Scale — middleware, AR retail, industrial SaaS, logistics.",
       },
     ],
   }),

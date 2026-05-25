@@ -1,56 +1,60 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { AboutTimeline } from "@/components/about-timeline";
+import { TeamGrid } from "@/components/team-grid";
 import { CTASection } from "@/components/cta-section";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { TextReveal } from "@/components/text-reveal";
 
-export const Route = createFileRoute("/about")({
+export const Route = createFileRoute("/team")({
   head: () => ({
     meta: [
-      { title: "About — ZeroDayTeam" },
+      { title: "Team — ZeroDayTeam" },
       {
         name: "description",
         content:
-          "A collective of high-stakes engineers building the invisible layers of modern enterprise tech since 2011.",
+          "Meet the engineers, designers, and strategists behind ZeroDayTeam — a collective shipping enterprise middleware, industrial SaaS, and AR commerce.",
       },
-      { property: "og:title", content: "About ZeroDayTeam" },
+      { property: "og:title", content: "Team — ZeroDayTeam" },
       {
         property: "og:description",
-        content: "From a freelance collective to a high-stakes engineering powerhouse.",
+        content:
+          "The people behind the invisible infrastructure that powers modern enterprises.",
       },
     ],
   }),
-  component: About,
+  component: Team,
 });
 
-function About() {
+function Team() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
-      <main id="main" className="pt-12">
-        <section className="mx-auto max-w-5xl px-6 py-20 text-center relative">
+      <main id="main">
+        <section className="mx-auto max-w-5xl px-6 pt-20 pb-8 text-center relative">
           <div className="absolute inset-x-0 top-0 h-[400px] gradient-mesh" />
           <div className="absolute inset-x-0 top-0 h-[400px] grain" />
           <ScrollReveal>
             <p className="relative text-xs tracking-widest text-muted-foreground uppercase font-mono">
-              / About
+              / Team
             </p>
           </ScrollReveal>
           <h1 className="relative mt-4">
-            <TextReveal className="text-display text-5xl md:text-7xl lg:text-8xl" staggerMs={50}>
-              Architects of the invisible.
+            <TextReveal
+              className="text-display text-5xl md:text-7xl lg:text-8xl"
+              staggerMs={50}
+            >
+              Meet the collective.
             </TextReveal>
           </h1>
           <ScrollReveal delay={400}>
             <p className="relative mt-6 text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              We build the middleware, orchestration, and infrastructure most teams never see — the
-              kind that quietly carries millions of transactions, routes, and packets every day.
+              A tight-knit team of engineers, architects, and strategists who
+              thrive in the invisible layers of technology.
             </p>
           </ScrollReveal>
         </section>
-        <AboutTimeline />
+        <TeamGrid />
         <CTASection />
       </main>
       <SiteFooter />

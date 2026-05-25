@@ -5,7 +5,7 @@ const rows = [
   { role: "AR Commerce", company: "Specra / Retail Tech", years: "2019 - 2024" },
   { role: "Logistics Engine", company: "Vectra Flow / Automotive", years: "2017 - 2023" },
   { role: "Middleware Lead", company: "SyncBridge / Enterprise", years: "2014 - 2021" },
-  { role: "Founding Engineers", company: "Zero Day / Collective", years: "2011 - 2014" },
+  { role: "Founding Engineers", company: "ZeroDayTeam / Collective", years: "2011 - 2014" },
 ];
 
 export function AboutTimeline() {
@@ -26,7 +26,7 @@ export function AboutTimeline() {
             <div className="absolute inset-0 grain opacity-10 pointer-events-none" />
             <p className="relative text-lg leading-relaxed">
               At{" "}
-              <span className="font-heading font-bold text-neon">Zero Day Development</span>,
+              <span className="font-heading font-bold text-neon">ZeroDayTeam</span>,
               we don't just build apps — we architect digital resilience. What started in 2011 as a
               small collective of specialized freelancers has evolved into a powerhouse for
               high-stakes engineering.

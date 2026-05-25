@@ -13,7 +13,7 @@ export const Route = createFileRoute("/$slug")({
   head: ({ loaderData }) => {
     const page = loaderData?.page;
     if (!page) return { meta: [{ title: "Not found" }] };
-    const title = page.seo?.title || `${page.title} — Zero Day`;
+    const title = page.seo?.title || `${page.title} — ZeroDayTeam`;
     const description = page.seo?.description || "";
     const ogImage =
       typeof page.seo?.ogImage === "object" ? page.seo?.ogImage?.url : page.seo?.ogImage;
