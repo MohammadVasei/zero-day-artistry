@@ -2,9 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, master, develop]
-  pull_request:
-    branches: [main, master, develop]
+    branches: [main, master]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -13,7 +12,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -22,21 +21,31 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: "20"
 
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: npm ci
 
       - name: Build site
-        run: bun run build
+        run: npm run build
+
+      - name: Prepare static output
+        run: |
+          # TanStack Start builds to dist/client (static) + dist/server (SSR).
+          # GitHub Pages serves the client bundle as a static site.
+          # Copy top-level static assets into client dir if they exist.
+          cp -n dist/robots.txt dist/client/ 2>/dev/null || true
+
+          # Add a 404.html that redirects to index for SPA client-side routing.
+          cp dist/client/index.html dist/client/404.html 2>/dev/null || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./dist/client
 
   deploy:
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
