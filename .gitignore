@@ -16,6 +16,17 @@ dist-ssr
 .nitro
 *.local
 
+# Environment files (secrets)
+.env
+.env.*
+!.env.example
+payload-cms/.env
+payload-cms/.env.*
+!payload-cms/.env.example
+
+# Seed temp files
+payload-cms/.seed-tmp/
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
