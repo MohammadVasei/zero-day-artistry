@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { ThemedImage } from "@/components/themed-image";
 import { useMagnetic } from "@/hooks/use-magnetic";
 
 export function CTASection() {
@@ -8,6 +9,11 @@ export function CTASection() {
   return (
     <section className="relative overflow-hidden mt-12">
       <div className="absolute inset-0 gradient-mesh" />
+      <ThemedImage
+        baseName="cta-bg"
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-screen pointer-events-none"
+      />
       <div className="absolute inset-0 grain" />
 
       <div className="relative mx-auto max-w-5xl px-6 py-32 text-center">

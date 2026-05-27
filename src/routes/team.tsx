@@ -5,6 +5,7 @@ import { TeamGrid } from "@/components/team-grid";
 import { CTASection } from "@/components/cta-section";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { TextReveal } from "@/components/text-reveal";
+import { ThemedImage } from "@/components/themed-image";
 import { getTeamMembers } from "@/lib/payload.functions";
 
 export const Route = createFileRoute("/team")({
@@ -38,6 +39,11 @@ function Team() {
       <main id="main" className="pt-12">
         <section className="mx-auto max-w-5xl px-6 py-20 text-center relative">
           <div className="absolute inset-x-0 top-0 h-[400px] gradient-mesh" />
+          <ThemedImage
+            baseName="team-bg"
+            alt=""
+            className="absolute inset-x-0 top-0 w-full h-[400px] object-cover opacity-30 mix-blend-screen pointer-events-none"
+          />
           <div className="absolute inset-x-0 top-0 h-[400px] grain" />
           <ScrollReveal>
             <p className="relative text-xs tracking-widest text-muted-foreground uppercase font-mono">

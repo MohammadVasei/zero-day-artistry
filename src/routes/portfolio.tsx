@@ -6,6 +6,7 @@ import { CaseStudies } from "@/components/case-studies";
 import { CTASection } from "@/components/cta-section";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { TextReveal } from "@/components/text-reveal";
+import { ThemedImage } from "@/components/themed-image";
 import { getCaseStudies, getProjects } from "@/lib/payload.functions";
 
 export const Route = createFileRoute("/portfolio")({
@@ -40,6 +41,11 @@ function Portfolio() {
       <main id="main">
         <section className="mx-auto max-w-5xl px-6 pt-20 pb-8 text-center relative">
           <div className="absolute inset-x-0 top-0 h-[300px] gradient-mesh" />
+          <ThemedImage
+            baseName="hero-bg"
+            alt=""
+            className="absolute inset-x-0 top-0 w-full h-[300px] object-cover opacity-25 mix-blend-screen pointer-events-none"
+          />
           <div className="absolute inset-x-0 top-0 h-[300px] grain" />
           <ScrollReveal>
             <p className="relative text-xs tracking-widest text-muted-foreground uppercase font-mono">

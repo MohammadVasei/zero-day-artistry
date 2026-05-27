@@ -1,6 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { TextReveal } from "@/components/text-reveal";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { ThemedImage } from "@/components/themed-image";
 import { useMagnetic } from "@/hooks/use-magnetic";
 
 const LINES = [
@@ -28,6 +29,11 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden min-h-[90vh] flex items-center">
       <div className="pointer-events-none absolute inset-0 gradient-mesh" />
+      <ThemedImage
+        baseName="hero-bg"
+        alt=""
+        className="pointer-events-none absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-screen"
+      />
 
       <div className="relative mx-auto max-w-7xl px-6 py-24 w-full">
         {/* Eyebrow */}

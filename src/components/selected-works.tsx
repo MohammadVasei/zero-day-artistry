@@ -1,5 +1,14 @@
 import { ArrowUpRight } from "lucide-react";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { ThemedImage } from "@/components/themed-image";
+
+/** Maps project titles to their generated image base names */
+const PROJECT_IMAGE_MAP: Record<string, string> = {
+  GridMaster: "gridmaster",
+  "Specra AR": "specra-ar",
+  "Vectra Flow": "vectra-flow",
+  SyncBridge: "syncbridge",
+};
 
 const FALLBACK_WORKS = [
   {
@@ -73,39 +82,51 @@ export function SelectedWorks({ cmsData }: { cmsData?: any[] }) {
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {works.map((w, i) => (
-          <ScrollReveal key={w.title} variant="scale" delay={i * 100}>
-            <article className="group relative rounded-3xl border border-border overflow-hidden card-hover bg-card">
-              <div
-                className={`relative aspect-[16/10] bg-gradient-to-br ${w.accent} overflow-hidden`}
-              >
-                <div className="absolute inset-0 grain opacity-20" />
-                <div className="absolute inset-6 rounded-2xl glass flex flex-col p-6 transition-transform duration-500 group-hover:scale-[1.02]">
-                  <div className="flex items-center justify-between text-background/70 text-xs font-mono">
-                    <span>{w.tag.toLowerCase().replace(/\s/g, "_")}.tsx</span>
-                  </div>
-                  <div className="mt-auto">
-                    <h3 className="font-heading text-background text-4xl md:text-5xl font-bold">
-                      {w.title}
-                    </h3>
+        {works.map((w, i) => {
+          const imageName = PROJECT_IMAGE_MAP[w.title];
+
+          return (
+            <ScrollReveal key={w.title} variant="scale" delay={i * 100}>
+              <article className="group relative rounded-3xl border border-border overflow-hidden card-hover bg-card">
+                <div
+                  className={`relative aspect-[16/10] bg-gradient-to-br ${w.accent} overflow-hidden`}
+                >
+                  {/* Project-specific themed image */}
+                  {imageName && (
+                    <ThemedImage
+                      baseName={imageName}
+                      alt={`${w.title} project visualization`}
+                      className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-screen transition-opacity duration-500 group-hover:opacity-70"
+                    />
+                  )}
+                  <div className="absolute inset-0 grain opacity-20" />
+                  <div className="absolute inset-6 rounded-2xl glass flex flex-col p-6 transition-transform duration-500 group-hover:scale-[1.02]">
+                    <div className="flex items-center justify-between text-background/70 text-xs font-mono">
+                      <span>{w.tag.toLowerCase().replace(/\s/g, "_")}.tsx</span>
+                    </div>
+                    <div className="mt-auto">
+                      <h3 className="font-heading text-background text-4xl md:text-5xl font-bold">
+                        {w.title}
+                      </h3>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="p-6 flex items-start justify-between gap-6">
-                <div>
-                  <div className="flex items-center gap-3 text-xs">
-                    <span className="pill !py-1 !px-3 !text-[10px] uppercase tracking-widest font-heading">
-                      {w.tag}
-                    </span>
-                    <span className="font-mono text-muted-foreground">{w.stack}</span>
+                <div className="p-6 flex items-start justify-between gap-6">
+                  <div>
+                    <div className="flex items-center gap-3 text-xs">
+                      <span className="pill !py-1 !px-3 !text-[10px] uppercase tracking-widest font-heading">
+                        {w.tag}
+                      </span>
+                      <span className="font-mono text-muted-foreground">{w.stack}</span>
+                    </div>
+                    <p className="mt-3 text-foreground/80 text-sm leading-relaxed">{w.blurb}</p>
                   </div>
-                  <p className="mt-3 text-foreground/80 text-sm leading-relaxed">{w.blurb}</p>
+                  <ArrowUpRight className="shrink-0 mt-1 text-muted-foreground group-hover:text-neon group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
                 </div>
-                <ArrowUpRight className="shrink-0 mt-1 text-muted-foreground group-hover:text-neon group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
-              </div>
-            </article>
-          </ScrollReveal>
-        ))}
+              </article>
+            </ScrollReveal>
+          );
+        })}
       </div>
     </section>
   );

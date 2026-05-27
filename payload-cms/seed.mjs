@@ -51,7 +51,9 @@ async function updateGlobal(token, slug, data) {
 async function uploadMedia(token, filePath, alt) {
   const form = new FormData();
   const fileBuffer = fs.readFileSync(filePath);
-  const blob = new Blob([fileBuffer], { type: "image/png" });
+  const ext = path.extname(filePath).toLowerCase();
+  const mimeType = ext === ".jpg" || ext === ".jpeg" ? "image/jpeg" : "image/png";
+  const blob = new Blob([fileBuffer], { type: mimeType });
   form.append("file", blob, path.basename(filePath));
   form.append("alt", alt);
   const res = await fetch(`${PAYLOAD_URL}/api/media`, {
@@ -74,7 +76,24 @@ const AVATAR_COLORS = [
   { bg: "#1e293b", text: "#ca8a04" },
   { bg: "#ca8a04", text: "#1e293b" },
   { bg: "#334155", text: "#fafaf9" },
+  { bg: "#0f172a", text: "#ca8a04" },
 ];
+
+// Map team member names to their real photo files in ./team-photos/
+const TEAM_PHOTOS = {
+  "Mohammad Vasei": "Mohammad.jpg",
+  "Mostafa Oraei": "Mostafa.jpg",
+  "Mahdiyar Oraei": "Mahdiyar.jpg",
+  "Amir Zereshki": "Amir.jpg",
+};
+
+// Map project titles to pre-generated images in ./generated-images/
+const PROJECT_IMAGES = {
+  GridMaster: "gridmaster-dark.png",
+  "Specra AR": "specra-ar-dark.png",
+  "Vectra Flow": "vectra-flow-dark.png",
+  SyncBridge: "syncbridge-dark.png",
+};
 
 async function generateProductImage(name, outputPath) {
   const colors = PRODUCT_COLORS[name] || { bg: "#1e293b", accent: "#ca8a04", text: "#f8fafc" };
@@ -121,9 +140,38 @@ const CASE_STUDIES = [
 ];
 
 const TEAM_MEMBERS = [
-  { name: "Erik Lindqvist", role: "Lead Architect", bio: "15 years of infrastructure engineering. Former platform lead at Spotify. Specializes in distributed systems and real-time data pipelines.", status: "published", sortOrder: 1, socialLinks: [{ platform: "LinkedIn", url: "https://linkedin.com" }, { platform: "GitHub", url: "https://github.com" }] },
-  { name: "Amira Hassan", role: "Senior Engineer", bio: "Full-stack engineer with deep expertise in AR/VR commerce platforms. Built Specra AR from prototype to production.", status: "published", sortOrder: 2, socialLinks: [{ platform: "LinkedIn", url: "https://linkedin.com" }, { platform: "GitHub", url: "https://github.com" }] },
-  { name: "Jonas Weber", role: "DevOps & SRE Lead", bio: "Cloud-native specialist managing zero-downtime deployments across EU infrastructure. Kubernetes certified architect.", status: "published", sortOrder: 3, socialLinks: [{ platform: "LinkedIn", url: "https://linkedin.com" }, { platform: "GitHub", url: "https://github.com" }] },
+  {
+    name: "Mohammad Vasei",
+    role: "Project Manager",
+    bio: "The strategic mind and visionary behind Zero Day Team. Mohammad defines project scope, aligns cross-functional teams, and drives every initiative from concept to delivery. With a deep understanding of product lifecycle management, agile methodologies, and client communication, he ensures the team consistently ships on time and above expectations. He is the bridge between business goals and technical execution — the person who turns ambitious ideas into production-ready software.",
+    status: "published",
+    sortOrder: 1,
+    socialLinks: [{ platform: "LinkedIn", url: "https://linkedin.com" }],
+  },
+  {
+    name: "Mostafa Oraei",
+    role: "Senior Backend & GIS Developer",
+    bio: "Widely regarded as one of Iran's greatest Backend and GIS engineers. Mostafa has held senior positions at the country's largest and most demanding tech companies, architecting systems that serve millions. His expertise spans geospatial information systems (GIS), real-time mapping engines, high-throughput APIs, microservice architectures, and large-scale PostgreSQL/PostGIS deployments. He brings deep knowledge of spatial indexing, coordinate reference systems, and routing algorithms — making him the go-to engineer for location-intelligence and infrastructure-grade backend systems.",
+    status: "published",
+    sortOrder: 2,
+    socialLinks: [{ platform: "LinkedIn", url: "https://linkedin.com" }, { platform: "GitHub", url: "https://github.com" }],
+  },
+  {
+    name: "Mahdiyar Oraei",
+    role: "Senior Backend Developer",
+    bio: "A versatile full-stack engineer whose JavaScript and TypeScript expertise knows no bounds. Mahdiyar builds everything — REST and GraphQL APIs, real-time WebSocket services, background workers, CI/CD pipelines, cloud infrastructure, database design, and DevOps automation. Proficient in Node.js, Express, NestJS, Next.js, Docker, and Kubernetes, he can literally own any layer of the stack. His ability to context-switch across domains and deliver production-grade code makes him the team's most adaptable and reliable engineer.",
+    status: "published",
+    sortOrder: 3,
+    socialLinks: [{ platform: "LinkedIn", url: "https://linkedin.com" }, { platform: "GitHub", url: "https://github.com" }],
+  },
+  {
+    name: "Amir Zereshki",
+    role: "Senior Flutter Developer",
+    bio: "A cross-platform mobile engineering powerhouse who can build any application on the planet. Amir specializes in Flutter and Dart, delivering pixel-perfect, high-performance apps for iOS, Android, web, and desktop from a single codebase. His expertise covers complex state management (Bloc, Riverpod), custom animations, native platform integrations, offline-first architectures, and App Store / Google Play deployment pipelines. From fintech dashboards to consumer-facing marketplaces, Amir transforms designs into polished, production-grade experiences that users love.",
+    status: "published",
+    sortOrder: 4,
+    socialLinks: [{ platform: "LinkedIn", url: "https://linkedin.com" }, { platform: "GitHub", url: "https://github.com" }],
+  },
 ];
 
 const SITE_SETTINGS = {
@@ -150,25 +198,54 @@ async function main() {
     return;
   }
 
-  console.log("\n📸 Generating product images...");
+  console.log("\n📸 Uploading product images...");
+  const generatedImagesDir = path.join(__dirname, "generated-images");
   const productMediaIds = {};
   for (const project of PROJECTS) {
-    const imgPath = path.join(tmpDir, `${project.title.toLowerCase().replace(/\s/g, "-")}.png`);
-    await generateProductImage(project.title, imgPath);
-    const media = await uploadMedia(token, imgPath, `${project.title} — product image`);
-    productMediaIds[project.title] = media.id;
-    console.log(`  ✓ ${project.title} image uploaded (id: ${media.id})`);
+    const preGenerated = PROJECT_IMAGES[project.title];
+    const preGenPath = preGenerated ? path.join(generatedImagesDir, preGenerated) : null;
+
+    if (preGenPath && fs.existsSync(preGenPath)) {
+      // Use pre-generated high-quality image
+      const media = await uploadMedia(token, preGenPath, `${project.title} — product image`);
+      productMediaIds[project.title] = media.id;
+      console.log(`  ✓ ${project.title} image uploaded (id: ${media.id})`);
+    } else {
+      // Fallback: generate SVG-based placeholder
+      const imgPath = path.join(tmpDir, `${project.title.toLowerCase().replace(/\s/g, "-")}.png`);
+      await generateProductImage(project.title, imgPath);
+      const media = await uploadMedia(token, imgPath, `${project.title} — product image`);
+      productMediaIds[project.title] = media.id;
+      console.log(`  ⚠ ${project.title} — no pre-generated image, using placeholder (id: ${media.id})`);
+    }
   }
 
-  console.log("\n👤 Generating team avatars...");
+  console.log("\n👤 Uploading team photos...");
+  const teamPhotosDir = path.join(__dirname, "team-photos");
   const teamMediaIds = {};
   for (let i = 0; i < TEAM_MEMBERS.length; i++) {
     const member = TEAM_MEMBERS[i];
-    const imgPath = path.join(tmpDir, `avatar-${member.name.toLowerCase().replace(/\s/g, "-")}.png`);
-    await generateAvatarImage(member.name, i, imgPath);
-    const media = await uploadMedia(token, imgPath, `${member.name} — team photo`);
-    teamMediaIds[member.name] = media.id;
-    console.log(`  ✓ ${member.name} avatar uploaded (id: ${media.id})`);
+    const realPhoto = TEAM_PHOTOS[member.name];
+    const realPhotoPath = realPhoto ? path.join(teamPhotosDir, realPhoto) : null;
+
+    if (realPhotoPath && fs.existsSync(realPhotoPath)) {
+      // Use real photo — resize/optimize to a consistent format
+      const optimizedPath = path.join(tmpDir, `photo-${member.name.toLowerCase().replace(/\s/g, "-")}.jpg`);
+      await sharp(realPhotoPath)
+        .resize(600, 600, { fit: "cover", position: "top" })
+        .jpeg({ quality: 85 })
+        .toFile(optimizedPath);
+      const media = await uploadMedia(token, optimizedPath, `${member.name} — team photo`);
+      teamMediaIds[member.name] = media.id;
+      console.log(`  ✓ ${member.name} real photo uploaded (id: ${media.id})`);
+    } else {
+      // Fallback: generate avatar placeholder
+      const imgPath = path.join(tmpDir, `avatar-${member.name.toLowerCase().replace(/\s/g, "-")}.png`);
+      await generateAvatarImage(member.name, i, imgPath);
+      const media = await uploadMedia(token, imgPath, `${member.name} — team photo`);
+      teamMediaIds[member.name] = media.id;
+      console.log(`  ⚠ ${member.name} — no photo found, using generated avatar (id: ${media.id})`);
+    }
   }
 
   console.log("\n💬 Seeding testimonials...");
